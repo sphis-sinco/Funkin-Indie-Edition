@@ -1,7 +1,7 @@
 {
 	"name": "monster",
 	"startingAnim": "idle",
-	"asset": "Monster_Assets",
+	"asset": "characters/Monster_Assets",
 	"barColor": "FFF3FF6E",
 	"animations": [
 		{

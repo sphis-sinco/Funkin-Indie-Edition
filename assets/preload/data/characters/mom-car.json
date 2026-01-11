@@ -1,7 +1,7 @@
 {
 	"name": "mom-car",
 	"startingAnim": "idle",
-	"asset": "momCar",
+	"asset": "characters/momCar",
 	"barColor": "FFD8558E",
 	"animations": [
 		{

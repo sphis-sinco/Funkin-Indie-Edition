@@ -1,7 +1,7 @@
 {
 	"name": "bf-car",
 	"startingAnim": "idle",
-	"asset": "bfCar",
+	"asset": "characters/bfCar",
 	"barColor": "FF31B0D1",
 	"animations": [
 		{

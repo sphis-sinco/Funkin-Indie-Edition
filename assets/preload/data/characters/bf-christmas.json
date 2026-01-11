@@ -1,7 +1,7 @@
 {
 	"name": "bf-christmas",
 	"startingAnim": "idle",
-	"asset": "bfChristmas",
+	"asset": "characters/bfChristmas",
 	"barColor": "FFFFFFFF",
 	"animations": [
 		{

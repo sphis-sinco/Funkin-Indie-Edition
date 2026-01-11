@@ -1,7 +1,7 @@
 {
 	"name": "dad",
 	"startingAnim": "idle",
-	"asset": "DADDY_DEAREST",
+	"asset": "characters/DADDY_DEAREST",
 	"barColor": "FFAF66CE",
 	"animations": [
 		{

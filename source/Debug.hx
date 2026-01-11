@@ -437,7 +437,7 @@ class DebugLogWriter
 	public function write(input:Array<Dynamic>, logLevel = 'TRACE'):Void
 	{
 		var ts = FlxStringUtil.formatTime(getTime(), true);
-		var msg = '$ts [${logLevel.rpad(' ', 10)}] ${input.join('')}';
+		var msg = '$ts [${logLevel.rpad(' ', 5).lpad(' ', 5)}] ${input.join('')}';
 
 		#if FEATURE_FILESYSTEM
 		if (active && file != null)

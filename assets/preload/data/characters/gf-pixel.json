@@ -1,7 +1,7 @@
 {
 	"name": "gf-pixel",
 	"startingAnim": "danceRight",
-	"asset": "gfPixel",
+	"asset": "characters/gfPixel",
 	"barColor": "FFFFFFFF",
 	"animations": [
 		{

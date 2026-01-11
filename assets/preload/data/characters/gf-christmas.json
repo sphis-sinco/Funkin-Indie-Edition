@@ -1,7 +1,7 @@
 {
 	"name": "gf-christmas",
 	"startingAnim": "danceRight",
-	"asset": "gfChristmas",
+	"asset": "characters/gfChristmas",
 	"barColor": "FFFFFFFF",
 	"animations": [
 		{

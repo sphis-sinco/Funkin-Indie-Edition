@@ -1,7 +1,7 @@
 {
 	"name": "mom",
 	"startingAnim": "idle",
-	"asset": "Mom_Assets",
+	"asset": "characters/Mom_Assets",
 	"barColor": "FFD8558E",
 	"animations": [
 		{

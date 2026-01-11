@@ -1,7 +1,7 @@
 {
 	"name": "gf-car",
 	"startingAnim": "danceRight",
-	"asset": "gfCar",
+	"asset": "characters/gfCar",
 	"barColor": "FFFFFFFF",
 	"animations": [
 		{

@@ -41,7 +41,7 @@ class OutdatedSubState extends MusicBeatState
 
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"Your K.E.C. is outdated!\nYou are on "
-			+ MainMenuState.kadeEngineVer
+			+ MainMenuState.ENGINE_VERSION
 			+ "\nwhile the most recent version is "
 			+ needVer
 			+ "."
@@ -51,9 +51,9 @@ class OutdatedSubState extends MusicBeatState
 			+ "\n\nPress Space to view the full changelog and update\nor ESCAPE to ignore this",
 			32);
 
-		if (MainMenuState.nightly != "")
+		if (MainMenuState.ENGINE_VERSION_NIGHTLY != "")
 			txt.text = "You are on\n"
-				+ MainMenuState.kadeEngineVer
+				+ MainMenuState.ENGINE_VERSION
 				+ "\nWhich is a PRE-RELEASE BUILD!"
 				+ "\n\nReport all bugs to the author of the pre-release.\nSpace/Escape ignores this.";
 
@@ -95,7 +95,7 @@ class OutdatedSubState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.ACCEPT && MainMenuState.nightly == "")
+		if (controls.ACCEPT && MainMenuState.ENGINE_VERSION_NIGHTLY == "")
 		{
 			fancyOpenURL("https://github.com/sphis-sinco/Kade-Engine-Continued/releases/latest");
 		}

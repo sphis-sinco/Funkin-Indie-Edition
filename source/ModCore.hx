@@ -43,7 +43,7 @@ class ModCore
 			// Framework being used to load assets. We're using a CUSTOM one which extends the OpenFL one.
 			framework: CUSTOM,
 			// The current version of our API.
-			apiVersion: API_VERSION,
+			apiVersionRule: API_VERSION,
 			// Call this function any time an error occurs.
 			errorCallback: onPolymodError,
 			// Enforce semantic version patterns for each mod.
@@ -93,7 +93,7 @@ class ModCore
 	static function getModIds():Array<String>
 	{
 		Debug.logInfo('Scanning the mods folder...');
-		var modMetadata = Polymod.scan(MOD_DIRECTORY);
+		var modMetadata = Polymod.scan({modRoot: MOD_DIRECTORY});
 		Debug.logInfo('Found ${modMetadata.length} mods when scanning.');
 		var modIds = [for (i in modMetadata) i.id];
 		return modIds;

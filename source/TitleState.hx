@@ -16,7 +16,7 @@ import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.system.ui.FlxSoundTray;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
@@ -59,7 +59,7 @@ class TitleState extends MusicBeatState
 		FlxG.autoPause = false;
 
 		FlxG.save.bind('kadeenginecontinued', 'Macohi');
-		FlxG.save.mergeFrom('funkin', 'ninjamuffin99', true, false);
+		// FlxG.save.mergeFrom('funkin', 'ninjamuffin99', true, false);
 
 		PlayerSettings.init();
 
@@ -292,9 +292,9 @@ class TitleState extends MusicBeatState
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-					if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
+					if (!MainMenuState.ENGINE_VERSION.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
 					{
-						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
+						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.ENGINE_VERSION);
 						OutdatedSubState.needVer = returnedData[0];
 						OutdatedSubState.currChanges = returnedData[1];
 						FlxG.switchState(new OutdatedSubState());

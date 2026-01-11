@@ -1,3 +1,4 @@
 1.9;
 - Rebranded Kade Engine
-- Window title change
+- Converted all characters to character JSONS!
+- Added new "properties" field to character JSONS

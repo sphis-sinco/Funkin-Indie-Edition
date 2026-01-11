@@ -63,7 +63,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -433,7 +433,8 @@ class PlayState extends MusicBeatState
 
 		camHUD.zoom = PlayStateChangeables.zoom;
 
-		FlxCamera.defaultCameras = [camGame];
+		@:privateAccess
+		FlxCamera._defaultCameras = [camGame];
 
 		persistentUpdate = true;
 		persistentDraw = true;
@@ -910,8 +911,7 @@ class PlayState extends MusicBeatState
 			add(judgementCounter);
 		}
 
-		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (PlayStateChangeables.useDownscroll ? 100 : -100), 0, "REPLAY",
-			20);
+		replayTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (PlayStateChangeables.useDownscroll ? 100 : -100), 0, "REPLAY", 20);
 		replayTxt.setFormat(Paths.font("vcr.ttf"), 42, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		replayTxt.borderSize = 4;
 		replayTxt.borderQuality = 2;
@@ -1493,14 +1493,14 @@ class PlayState extends MusicBeatState
 				var fx = AL.createEffect();
 				AL.effectf(fx,AL.PITCH,songMultiplier);
 				AL.auxi(aux, AL.EFFECTSLOT_EFFECT, fx);
-				var instSource = FlxG.sound.music._channel.__source;
+				var instSource = FlxG.sound.music._channel.__audioSource;
 
 				var backend:lime._internal.backend.native.NativeAudioSource = instSource.__backend;
 
 				AL.source3i(backend.handle, AL.AUXILIARY_SEND_FILTER, aux, 1, AL.FILTER_NULL);
 				if (vocals != null)
 				{
-					var vocalSource = vocals._channel.__source;
+					var vocalSource = vocals._channel.__audioSource;
 
 					backend = vocalSource.__backend;
 					AL.source3i(backend.handle, AL.AUXILIARY_SEND_FILTER, aux, 1, AL.FILTER_NULL);
@@ -1512,9 +1512,9 @@ class PlayState extends MusicBeatState
 		#if cpp
 		@:privateAccess
 		{
-			lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+			lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
 			if (vocals.playing)
-				lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+				lime.media.openal.AL.sourcef(vocals._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
 		}
 		trace("pitched inst and vocals to " + songMultiplier);
 		#end
@@ -1967,9 +1967,9 @@ class PlayState extends MusicBeatState
 		{
 			#if desktop
 			// The __backend.handle attribute is only available on native.
-			lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+			lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
 			if (vocals.playing)
-				lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+				lime.media.openal.AL.sourcef(vocals._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
 			#end
 		}
 
@@ -2059,12 +2059,14 @@ class PlayState extends MusicBeatState
 		}
 
 		#if cpp
-		if (FlxG.sound.music.playing)
-			@:privateAccess
+		@:privateAccess
 		{
-			lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
-			if (vocals.playing)
-				lime.media.openal.AL.sourcef(vocals._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+			if (FlxG.sound.music.playing)
+			{
+				lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+				if (vocals.playing)
+					lime.media.openal.AL.sourcef(vocals._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, songMultiplier);
+			}
 		}
 		#end
 

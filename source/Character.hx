@@ -81,9 +81,9 @@ class Character extends FlxSprite
 
 		var tex:FlxAtlasFrames;
 		if (data.properties?.packer)
-			text = Paths.getPackerAtlas(data.asset, 'shared');
+			tex = Paths.getPackerAtlas(data.asset, 'shared');
 		else
-			text = Paths.getSparrowAtlas(data.asset, 'shared');
+			tex = Paths.getSparrowAtlas(data.asset, 'shared');
 		
 		frames = tex;
 		if (frames != null)

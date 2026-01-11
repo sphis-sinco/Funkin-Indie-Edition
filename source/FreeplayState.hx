@@ -2,7 +2,7 @@ package;
 
 import openfl.utils.Future;
 import openfl.media.Sound;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 #if FEATURE_STEPMANIA
 import smTools.SMFile;
 #end
@@ -404,7 +404,7 @@ class FreeplayState extends MusicBeatState
 		@:privateAccess
 		{
 			if (FlxG.sound.music.playing)
-				lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__source.__backend.handle, lime.media.openal.AL.PITCH, rate);
+				lime.media.openal.AL.sourcef(FlxG.sound.music._channel.__audioSource.__backend.handle, lime.media.openal.AL.PITCH, rate);
 		}
 		#end
 

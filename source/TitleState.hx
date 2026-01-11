@@ -58,7 +58,8 @@ class TitleState extends MusicBeatState
 
 		FlxG.autoPause = false;
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('kadeenginecontinued', 'Macohi');
+		FlxG.save.mergeFrom('funkin', 'ninjamuffin99', true, false);
 
 		PlayerSettings.init();
 
@@ -284,7 +285,7 @@ class TitleState extends MusicBeatState
 			{
 				// Get current version of Kade Engine
 
-				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
+				var http = new haxe.Http("https://raw.githubusercontent.com/sphis-sinco/Kade-Engine-Continued/master/version.downloadMe");
 				var returnedData:Array<String> = [];
 
 				http.onData = function(data:String)

@@ -2281,31 +2281,6 @@ class PlayState extends MusicBeatState
 				openSubState(new PauseSubState());
 		}
 
-		if (FlxG.keys.justPressed.FIVE && songStarted)
-		{
-			songMultiplier = 1;
-			if (useVideo)
-			{
-				GlobalVideo.get().stop();
-				remove(videoSprite);
-				removedVideo = true;
-			}
-			cannotDie = true;
-
-			FlxG.switchState(new WaveformTestState());
-			clean();
-			PlayState.stageTesting = false;
-			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
-			FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
-			#if FEATURE_LUAMODCHART
-			if (luaModchart != null)
-			{
-				luaModchart.die();
-				luaModchart = null;
-			}
-			#end
-		}
-
 		if (FlxG.keys.justPressed.SEVEN && songStarted)
 		{
 			songMultiplier = 1;

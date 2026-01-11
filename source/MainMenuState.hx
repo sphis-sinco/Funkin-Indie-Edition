@@ -38,7 +38,7 @@ class MainMenuState extends MusicBeatState
 	public static var firstStart:Bool = true;
 
 	public static var ENGINE_VERSION_NIGHTLY:String = "";
-	public static var ENGINE_VERSION:String = "1.8" + ENGINE_VERSION_NIGHTLY;
+	public static var ENGINE_VERSION:String = "1.9" + ENGINE_VERSION_NIGHTLY;
 	public static var GAME_VERSION:String = "0.2.7.1";
 
 	var magenta:FlxSprite;

@@ -2,7 +2,9 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Friday Night Funkin': Kade Engine" file="Kade Engine" packageName="com.kadedev.kadeengine" package="com.kadedev.kadeengine" main="Main" version="0.2.7.1" company="kadedev" />
+	<app title="Kade Engine Continued" file="Kade Engine"
+		packageName="com.macohi.kadeenginecontinued" package="com.macohi.kadeenginecontinued" main="Main"
+		version="0.2.7.1" company="Macohi" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
@@ -20,7 +22,7 @@
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These window settings apply to all targets-->
-	<window width="1280" height="720" fps="" background="#000000" hardware="true" vsync="false" />
+	<window width="1280" height="720" fps="120" background="#000000" hardware="true" vsync="false" />
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
@@ -44,7 +46,7 @@
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
-	
+
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
@@ -100,7 +102,7 @@
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />
 	<!-- <template path='mods' /> -->
-	
+
 	<!-- <assets path="CHANGELOG.md" rename='changelog.txt'/> -->
 
 	<!-- NOTE FOR FUTURE SELF SINCE FONTS ARE ALWAYS FUCKY 
@@ -186,23 +188,23 @@
 	<haxeflag name="--no-traces" unless="debug" />
 	<haxeflag name="--dce full" if="release" />
 
-  <!-- Use defines to ensure compile-time definitions have readable context. -->
-  <!-- Allowed inputs are mobile,desktop,web,ios,android,windows,mac,linux,switch,html5,cpp,neko,flash,js -->
+	<!-- Use defines to ensure compile-time definitions have readable context. -->
+	<!-- Allowed inputs are mobile,desktop,web,ios,android,windows,mac,linux,switch,html5,cpp,neko,flash,js -->
 
-  <!-- Defines whether the Discord client should be enabled. Only works on desktop. -->
+	<!-- Defines whether the Discord client should be enabled. Only works on desktop. -->
   <haxedef name="FEATURE_DISCORD" if="desktop" />
-  <!-- Defines whether the file system can be read/written directly. Does not work in browser. -->
+	<!-- Defines whether the file system can be read/written directly. Does not work in browser. -->
   <haxedef name="FEATURE_FILESYSTEM" if="desktop" />
-  <!-- Defines whether Lua Modcharts should be enabled. Only works on Windows. -->
+	<!-- Defines whether Lua Modcharts should be enabled. Only works on Windows. -->
   <haxedef name="FEATURE_LUAMODCHART" if="windows" />
-  <!-- Defines whether WebM videos should be enabled. Currently only enabled on Windows. -->
+	<!-- Defines whether WebM videos should be enabled. Currently only enabled on Windows. -->
   <haxedef name="FEATURE_WEBM" if="windows" />
-  <!-- Defines whether StepMania files can be loaded. -->
+	<!-- Defines whether StepMania files can be loaded. -->
   <haxedef name="FEATURE_STEPMANIA" if="desktop" />
-  <!-- Defines whether the Thread class can be used. -->
+	<!-- Defines whether the Thread class can be used. -->
   <haxedef name="FEATURE_MULTITHREADING" if="cpp" />
 
-  <!-- Defines whether the Mods menu will display before launching. -->
+	<!-- Defines whether the Mods menu will display before launching. -->
   <haxedef name="FEATURE_MODCORE" if="desktop" />
 
 </project>

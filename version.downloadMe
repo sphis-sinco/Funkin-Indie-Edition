@@ -1,7 +1,7 @@
 1.9;
-- Added lastVersion save field that when its not the current installed version will display the outdated state, showing the new changes for the current update
-- Added new properties field to character JSONS
+- Added "lastVersion" save field that when its not the current installed version will display the outdated state, showing the new changes for the current update
+- Added new "properties" field to character JSONS
 - Pressing your RESET key in freeplay with repopulate the song data
 - Converted all characters to character JSONS!
-- Changed location of character offset files to assets/data/characters/
+- Changed location of character offset files to "assets/data/characters/"
 - Rebranded to "Kade Engine Continued"

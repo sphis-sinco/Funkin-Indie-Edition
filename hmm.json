@@ -45,11 +45,30 @@
       "version": null
     },
     {
+      "name": "hxcpp",
+      "type": "haxelib",
+      "version": null
+    },
+    {
       "name": "hxvm-luajit",
       "type": "git",
       "dir": null,
       "ref": null,
       "url": "https://github.com/nebulazorua/hxvm-luajit"
+    },
+    {
+      "name": "jsonpatch",
+      "type": "git",
+      "dir": null,
+      "ref": "f9b83215acd586dc28754b4ae7f69d4c06c3b4d3",
+      "url": "https://github.com/EliteMasterEric/jsonpatch"
+    },
+    {
+      "name": "jsonpath",
+      "type": "git",
+      "dir": null,
+      "ref": "7a24193717b36393458c15c0435bb7c4470ecdda",
+      "url": "https://github.com/EliteMasterEric/jsonpath"
     },
     {
       "name": "lime",
@@ -81,20 +100,6 @@
       "dir": null,
       "ref": null,
       "url": "https://github.com/larsiusprime/polymod.git"
-    },
-    {
-      "name": "jsonpatch",
-      "type": "git",
-      "dir": null,
-      "ref": "f9b83215acd586dc28754b4ae7f69d4c06c3b4d3",
-      "url": "https://github.com/EliteMasterEric/jsonpatch"
-    },
-    {
-      "name": "jsonpath",
-      "type": "git",
-      "dir": null,
-      "ref": "7a24193717b36393458c15c0435bb7c4470ecdda",
-      "url": "https://github.com/EliteMasterEric/jsonpath"
     },
     {
       "name": "thx.core",

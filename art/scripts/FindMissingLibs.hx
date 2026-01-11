@@ -37,9 +37,14 @@ class FindMissingLibs
 
 					var depStringAppend = '';
 
-					if (depVer != '')
-						if (!FileSystem.exists('.haxelib/$dep/${convertToValidPath(depVer)}'))
-							depStringAppend += '| MISSING';
+					if ((!FileSystem.exists('.haxelib/${convertToValidPath(dep)}/${convertToValidPath(depVer)}') && depVer != '')
+						|| (!FileSystem.exists('.haxelib/${convertToValidPath(dep)}/') && depVer == ''))
+					{
+						depStringAppend += '| MISSING';
+
+						if (File.getContent('hmm.json').contains(dep))
+							depStringAppend += ' (hmm reinstall or hmm install should work)';
+					}
 
 					trace(' * $depString $depStringAppend');
 				}

@@ -1,6 +1,7 @@
 # Changelogs
 
 - [Latest](latest) (Contains changes that are not in a release yet)
+- [1.9](changelog-1.9)
 - [1.8](changelog-1.8)
 - [1.7](changelog-1.7)
 - [1.6.2](changelog-1.6.2)

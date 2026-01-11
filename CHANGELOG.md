@@ -1,5 +1,6 @@
 # 1.9 (1/11/2026)
 ## Fixed
+- Fixed rating display not being moved properly in Gameplay Customizable State
 - The engine now compiles with the latest libraries
 
 ## Added

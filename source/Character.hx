@@ -107,6 +107,7 @@ class Character extends FlxSprite
 			}
 
 		barColor = FlxColor.fromString(data.barColor);
+		trace(data.barColor);
 
 		playAnim(data.startingAnim);
 

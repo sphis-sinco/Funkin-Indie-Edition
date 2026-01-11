@@ -68,10 +68,6 @@ class TitleState extends MusicBeatState
 		// It doesn't reupdate the list before u restart rn lmao
 		NoteskinHelpers.updateNoteskins();
 
-		FlxG.sound.muteKeys = [FlxKey.fromString(FlxG.save.data.muteBind)];
-		FlxG.sound.volumeDownKeys = [FlxKey.fromString(FlxG.save.data.volDownBind)];
-		FlxG.sound.volumeUpKeys = [FlxKey.fromString(FlxG.save.data.volUpBind)];
-
 		FlxG.mouse.visible = false;
 
 		FlxG.worldBounds.set(0, 0);

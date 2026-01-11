@@ -172,5 +172,13 @@ class KadeEngineData
 		Main.watermarks = FlxG.save.data.watermark;
 
 		(cast(Lib.current.getChildAt(0), Main)).setFPSCap(FlxG.save.data.fpsCap);
+
+		FlxG.sound.muteKeys = [FlxKey.fromString(FlxG.save.data.muteBind)];
+		FlxG.sound.volumeDownKeys = [FlxKey.fromString(FlxG.save.data.volDownBind)];
+		FlxG.sound.volumeUpKeys = [FlxKey.fromString(FlxG.save.data.volUpBind)];
+
+		Debug.logInfo('Save data fields: ');
+		for (field in Reflect.fields(FlxG.save.data))
+			Debug.logInfo(' * ${field} : ${Reflect.field(FlxG.save.data, field)}');
 	}
 }

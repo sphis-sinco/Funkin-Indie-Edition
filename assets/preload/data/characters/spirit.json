@@ -2,6 +2,7 @@
 	"name": "spirit",
 	"startingAnim": "idle",
 	"properties": {
+		"pixel": true,
 		"packer": true
 	},
 	"asset": "characters/spirit",

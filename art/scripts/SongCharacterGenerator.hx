@@ -124,7 +124,7 @@ class SongCharacterGenerator
 
 		var addOffset = function(anim = '', ?x = 0.0, ?y = 0.0)
 		{
-			trace('addOffset($anim : $x,$y)');
+			trace(' * addOffset($anim : $x,$y)');
 			if (animation.getAnim(anim) != null)
 				animation.getAnim(anim).offsets = [x, y];
 		};
@@ -164,7 +164,7 @@ class SongCharacterGenerator
 			for (offsets in file)
 			{
 				var offsetz = offsets.split(' ');
-				trace(' * $offsetz');
+				// trace(' * $offsetz');
 				if (offsetz.length > 1)
 					addOffset(offsetz[0], Std.parseFloat(offsetz[1] ?? '0.0'), Std.parseFloat(offsetz[2] ?? '0.0'));
 			}
@@ -180,7 +180,7 @@ class SongCharacterGenerator
 		var frames = '';
 		var tex = '';
 
-		var antialiasing = false;
+		var antialiasing = true;
 
 		var properties:Dynamic = {};
 
@@ -532,13 +532,13 @@ class SongCharacterGenerator
 		trace('Saving char : ' + char);
 
 		var notes = [];
-		
+
 		if (char == 'spirit')
 			properties.packer = true;
-		
+
 		if (char.contains('bf') || char == 'pico')
 			properties.flipX = true;
-		
+
 		if (char.contains('gf'))
 			barColor = 0xA5004D;
 		if (char.contains('bf'))
@@ -549,6 +549,18 @@ class SongCharacterGenerator
 
 		if (notes.length > 0)
 			properties.notes = notes;
+
+		if (!antialiasing)
+		{
+			properties.pixel = true;
+			if (widthMultiplier > 1 && widthMultiplier % 6 > 0)
+				properties.scale_addition = widthMultiplier % 6;
+		}
+		else
+		{
+			if (widthMultiplier > 1)
+				properties.scale_addition = widthMultiplier;
+		}
 
 		if (animation.anims.length > 0)
 		{

@@ -1,6 +1,9 @@
 {
 	"name": "senpai-angry",
 	"startingAnim": "idle",
+	"properties": {
+		"pixel": true
+	},
 	"asset": "characters/senpai",
 	"barColor": "FFFFAA6F",
 	"animations": [

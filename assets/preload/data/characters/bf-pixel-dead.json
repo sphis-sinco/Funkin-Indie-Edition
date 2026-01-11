@@ -2,7 +2,8 @@
 	"name": "bf-pixel-dead",
 	"startingAnim": "firstDeath",
 	"properties": {
-		"flipX": true
+		"flipX": true,
+		"pixel": true
 	},
 	"asset": "characters/bfPixelsDEAD",
 	"barColor": "FF31B0D1",

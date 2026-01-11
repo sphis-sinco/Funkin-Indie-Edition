@@ -112,10 +112,12 @@ class Character extends FlxSprite
 
 		if (data.properties?.pixel)
 		{
+			antialiasing = false;
 			setGraphicSize(Std.int(width * (CoolUtil.daPixelZoom + (data.properties?.scale_addition ?? 0))));
 		}
 		else
 		{
+			antialiasing = true;
 			setGraphicSize(Std.int(width * (1 + (data.properties?.scale_addition ?? 0))));
 		}
 

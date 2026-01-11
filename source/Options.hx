@@ -13,12 +13,15 @@ class Option
 	public function new(availibleInPause:Bool, desc:String)
 	{
 		display = updateDisplay();
-		
+
 		if (OptionsMenu.isInPause && !availibleInPause)
 			description = "This option cannot be toggled in the pause menu.";
 		else
 			description = desc;
+		this.availibleInPause = availibleInPause;
 	}
+
+	public var availibleInPause:Bool = true;
 
 	private var description:String = "";
 	private var display:String;
@@ -1240,11 +1243,8 @@ class CustomizeGameplay extends Option
 {
 	public function new(desc:String)
 	{
-		#if CUSTOMIZE_GAMEPLAY
-		super(false, desc)
-		#else
-		super(true, "This option cannot be used right now cause its broken");
-		#end
+		super(false, #if CUSTOMIZE_GAMEPLAY desc #else "This option cannot be used right now cause its broken" #end);
+
 	}
 
 	public override function press():Bool
@@ -1262,7 +1262,11 @@ class CustomizeGameplay extends Option
 
 	private override function updateDisplay():String
 	{
+		#if CUSTOMIZE_GAMEPLAY
+		return "Customize Gameplay";
+		#else
 		return "Customize Gameplay (BROKEN RIGHT NOW, BEING FIXED)";
+		#end
 	}
 }
 

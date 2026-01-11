@@ -1,5 +1,6 @@
 1.9;
 - Added new `properties` field to character JSONS
+- Options not availible in the pause menu are not in the pause menu options
 - Disabled Customize Gameplay option (broken for some reason sry!)
 - Converted all characters to character JSONS!
 - Rebranded to "Kade Engine Continued"

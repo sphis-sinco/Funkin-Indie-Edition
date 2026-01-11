@@ -183,7 +183,6 @@
 	<icon path="art/icon512.png" size='512'/>
 	<icon path="art/iconOG.png" />
 
-	<haxeflag name="--no-traces" unless="debug" />
 	<haxeflag name="--dce full" if="release" />
 
 	<!-- Use defines to ensure compile-time definitions have readable context. -->

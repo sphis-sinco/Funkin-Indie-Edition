@@ -50,9 +50,6 @@ class PauseSubState extends MusicBeatSubstate
 				GlobalVideo.get().pause();
 		}
 
-		if (FlxG.sound.music.playing)
-			FlxG.sound.music.pause();
-
 		for (i in FlxG.sound.list)
 		{
 			if (i.playing && i.ID != 9000)
@@ -132,6 +129,9 @@ class PauseSubState extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
+		if (FlxG.sound.music.playing)
+			FlxG.sound.music.pause();
+
 		if (pauseMusic.volume < 0.5)
 			pauseMusic.volume += 0.01 * elapsed;
 

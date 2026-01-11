@@ -132,7 +132,7 @@ class MainMenuState extends MusicBeatState
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, 'Funkin: ' + gameVer, 12);
 		if (Main.watermarks)
 		{
-			versionShit.y -= 20;
+			versionShit.y -= 32;
 			versionShit.text += "\nKade Engine: " + kadeEngineVer;
 			versionShit.text += "\nIndie Edition: " + indieEditionVer;
 		}

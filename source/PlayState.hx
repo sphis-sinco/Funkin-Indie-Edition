@@ -2490,6 +2490,14 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
+			if (Math.abs(FlxG.sound.music.time - (Conductor.songPosition * songMultiplier)) > 20)
+			{
+				trace('RESYNC');
+				FlxG.sound.music.time = Conductor.songPosition * songMultiplier;
+				vocals.time = FlxG.sound.music.time;
+				resyncVocals();
+			}
+
 			// Conductor.songPosition = FlxG.sound.music.time;
 			Conductor.songPosition += FlxG.elapsed * 1000;
 			Conductor.rawPosition = FlxG.sound.music.time;
@@ -4366,10 +4374,6 @@ class PlayState extends MusicBeatState
 	override function stepHit()
 	{
 		super.stepHit();
-		if (FlxG.sound.music.time > Conductor.rawPosition + 20 || FlxG.sound.music.time < Conductor.rawPosition - 20)
-		{
-			resyncVocals();
-		}
 
 		#if FEATURE_LUAMODCHART
 		if (executeModchart && luaModchart != null)

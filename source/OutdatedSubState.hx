@@ -41,8 +41,8 @@ class OutdatedSubState extends MusicBeatState
 		add(kadeLogo);
 
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"Your Kade Engine is outdated!\nYou are on "
-			+ MainMenuState.kadeEngineVer
+			"Your Indie Edition is outdated!\nYou are on "
+			+ MainMenuState.indieEditionVer
 			+ "\nwhile the most recent version is "
 			+ needVer
 			+ "."
@@ -53,17 +53,17 @@ class OutdatedSubState extends MusicBeatState
 			32);
 
 		if (justDownloaded)
-			txt.text = "Welcome to Kade Engine Continued "
-				+ MainMenuState.kadeEngineVer
+			txt.text = "Welcome to Indie Edition "
+				+ MainMenuState.indieEditionVer
 				+ "!"
 				+ "\n\nWhat's new:\n\n"
 				+ currChanges
 				+ "\n& more changes and bugfixes in the full changelog"
 				+ "\n\nPress Space to view the full changelog and update\nor ESCAPE to ignore this";
 
-		if (MainMenuState.nightly != "")
+		if (MainMenuState.indieEditionVer_nightly != "")
 			txt.text = "You are on\n"
-				+ MainMenuState.kadeEngineVer
+				+ MainMenuState.indieEditionVer
 				+ "\nWhich is a PRE-RELEASE BUILD!"
 				+ "\n\nReport all bugs to the author of the pre-release.\nSpace/Escape ignores this.";
 
@@ -102,12 +102,12 @@ class OutdatedSubState extends MusicBeatState
 				FlxTween.tween(kadeLogo, {alpha: 0.8}, 0.8, {ease: FlxEase.quartInOut});
 		}, 0);
 
-		FlxG.save.data.lastVersion = MainMenuState.kadeEngineVer;
+		FlxG.save.data.lastVersion = MainMenuState.indieEditionVer;
 	}
 
 	override function update(elapsed:Float)
 	{
-		if (controls.ACCEPT && MainMenuState.nightly == "")
+		if (controls.ACCEPT && MainMenuState.indieEditionVer_nightly == "")
 		{
 			fancyOpenURL("https://github.com/sphis-sinco/Kade-Engine-Continued/releases/latest");
 		}

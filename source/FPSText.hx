@@ -113,7 +113,7 @@ class FPSText extends TextField
 		{
 			text = (FlxG.save.data.fps ? "FPS: "
 				+ currentFPS
-				+ (Main.watermarks ? "\nIE " + MainMenuState.kadeEngineVer : "") : (Main.watermarks ? "IE " + "v" + MainMenuState.kadeEngineVer : ""));
+				+ (Main.watermarks ? "\nIE " + MainMenuState.indieEditionVer : "") : (Main.watermarks ? "IE " + "v" + MainMenuState.indieEditionVer : ""));
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();

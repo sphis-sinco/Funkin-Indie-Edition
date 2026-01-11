@@ -1,0 +1,91 @@
+{
+	"name": "spooky",
+	"startingAnim": "danceRight",
+	"asset": "spooky_kids_assets",
+	"barColor": "FFD57E00",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "spooky UP NOTE",
+			"name": "singUP",
+			"offsets": [
+				-20,
+				26
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "spooky DOWN note",
+			"name": "singDOWN",
+			"offsets": [
+				-50,
+				-130
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "note sing left",
+			"name": "singLEFT",
+			"offsets": [
+				130,
+				-10
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "spooky sing right",
+			"name": "singRIGHT",
+			"offsets": [
+				-130,
+				-14
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "spooky dance idle",
+			"name": "danceLeft",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"frameIndices": [
+				0,
+				2,
+				6
+			],
+			"flipY": false,
+			"frameRate": 12
+		},
+		{
+			"flipX": false,
+			"prefix": "spooky dance idle",
+			"name": "danceRight",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"frameIndices": [
+				8,
+				10,
+				12,
+				14
+			],
+			"flipY": false,
+			"frameRate": 12
+		}
+	]
+}

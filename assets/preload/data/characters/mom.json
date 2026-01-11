@@ -1,0 +1,84 @@
+{
+	"name": "mom",
+	"startingAnim": "idle",
+	"asset": "Mom_Assets",
+	"barColor": "FFD8558E",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Mom Idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Up Pose",
+			"name": "singUP",
+			"offsets": [
+				14,
+				71
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "MOM DOWN POSE",
+			"name": "singDOWN",
+			"offsets": [
+				20,
+				-160
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Left Pose",
+			"name": "singLEFT",
+			"offsets": [
+				250,
+				-23
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Pose Left",
+			"name": "singRIGHT",
+			"offsets": [
+				10,
+				-60
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Idle",
+			"name": "idleLoop",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"frameIndices": [
+				11,
+				12
+			],
+			"flipY": false,
+			"frameRate": 12
+		}
+	]
+}

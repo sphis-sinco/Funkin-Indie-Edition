@@ -1,0 +1,84 @@
+{
+	"name": "dad",
+	"startingAnim": "idle",
+	"asset": "DADDY_DEAREST",
+	"barColor": "FFAF66CE",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Dad idle dance",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note UP",
+			"name": "singUP",
+			"offsets": [
+				-6,
+				50
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note RIGHT",
+			"name": "singRIGHT",
+			"offsets": [
+				0,
+				27
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note DOWN",
+			"name": "singDOWN",
+			"offsets": [
+				0,
+				-30
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad Sing Note LEFT",
+			"name": "singLEFT",
+			"offsets": [
+				-10,
+				10
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Dad idle dance",
+			"name": "idleLoop",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"frameIndices": [
+				11,
+				12
+			],
+			"flipY": false,
+			"frameRate": 12
+		}
+	]
+}

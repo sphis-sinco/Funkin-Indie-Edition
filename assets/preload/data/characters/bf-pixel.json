@@ -1,0 +1,116 @@
+{
+	"name": "bf-pixel",
+	"startingAnim": "idle",
+	"asset": "bfPixel",
+	"barColor": "FF31B0D1",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "BF IDLE",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF UP NOTE",
+			"name": "singUP",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF LEFT NOTE",
+			"name": "singLEFT",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF RIGHT NOTE",
+			"name": "singRIGHT",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF DOWN NOTE",
+			"name": "singDOWN",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF UP MISS",
+			"name": "singUPmiss",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF LEFT MISS",
+			"name": "singLEFTmiss",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF RIGHT MISS",
+			"name": "singRIGHTmiss",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF DOWN MISS",
+			"name": "singDOWNmiss",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

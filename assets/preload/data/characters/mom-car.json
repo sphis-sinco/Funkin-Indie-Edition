@@ -1,0 +1,86 @@
+{
+	"name": "mom-car",
+	"startingAnim": "idle",
+	"asset": "momCar",
+	"barColor": "FFD8558E",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Mom Idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Up Pose",
+			"name": "singUP",
+			"offsets": [
+				14,
+				71
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "MOM DOWN POSE",
+			"name": "singDOWN",
+			"offsets": [
+				20,
+				-160
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Left Pose",
+			"name": "singLEFT",
+			"offsets": [
+				250,
+				-23
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Pose Left",
+			"name": "singRIGHT",
+			"offsets": [
+				10,
+				-60
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Mom Idle",
+			"name": "idleHair",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

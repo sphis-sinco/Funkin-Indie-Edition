@@ -1,0 +1,134 @@
+{
+	"name": "bf-car",
+	"startingAnim": "idle",
+	"asset": "bfCar",
+	"barColor": "FF31B0D1",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "BF idle dance",
+			"name": "idle",
+			"offsets": [
+				-5,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE UP0",
+			"name": "singUP",
+			"offsets": [
+				-29,
+				27
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE LEFT0",
+			"name": "singLEFT",
+			"offsets": [
+				12,
+				-6
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE RIGHT0",
+			"name": "singRIGHT",
+			"offsets": [
+				-38,
+				-7
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE DOWN0",
+			"name": "singDOWN",
+			"offsets": [
+				-10,
+				-50
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE UP MISS",
+			"name": "singUPmiss",
+			"offsets": [
+				-29,
+				27
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE LEFT MISS",
+			"name": "singLEFTmiss",
+			"offsets": [
+				12,
+				24
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE RIGHT MISS",
+			"name": "singRIGHTmiss",
+			"offsets": [
+				-30,
+				21
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF NOTE DOWN MISS",
+			"name": "singDOWNmiss",
+			"offsets": [
+				-11,
+				-19
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF idle dance",
+			"name": "idleHair",
+			"offsets": [
+				-5,
+				0
+			],
+			"looped": true,
+			"frameIndices": [
+				10,
+				11,
+				12,
+				13
+			],
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

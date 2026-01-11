@@ -1,0 +1,116 @@
+{
+	"name": "pico",
+	"startingAnim": "idle",
+	"asset": "Pico_FNF_assetss",
+	"barColor": "FFB7D855",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Pico Idle Dance",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "pico Up note0",
+			"name": "singUP",
+			"offsets": [
+				-29,
+				27
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Pico Down Note0",
+			"name": "singDOWN",
+			"offsets": [
+				200,
+				-70
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Pico Note Right0",
+			"name": "singLEFT",
+			"offsets": [
+				65,
+				9
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Pico NOTE LEFT0",
+			"name": "singRIGHT",
+			"offsets": [
+				-68,
+				-7
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Pico NOTE LEFT miss",
+			"name": "singRIGHTmiss",
+			"offsets": [
+				-60,
+				41
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Pico Note Right Miss",
+			"name": "singLEFTmiss",
+			"offsets": [
+				62,
+				64
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "pico Up note miss",
+			"name": "singUPmiss",
+			"offsets": [
+				-19,
+				67
+			],
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Pico Down Note MISS",
+			"name": "singDOWNmiss",
+			"offsets": [
+				210,
+				-28
+			],
+			"looped": true,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

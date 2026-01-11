@@ -1,0 +1,73 @@
+{
+	"name": "spirit",
+	"startingAnim": "idle",
+	"asset": "spirit",
+	"barColor": "FFFF3C6E",
+
+	"properties": {
+		"packer": true
+	},
+
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "idle spirit_",
+			"name": "idle",
+			"offsets": [
+				-220,
+				-280
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "up_",
+			"name": "singUP",
+			"offsets": [
+				-220,
+				-240
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "right_",
+			"name": "singRIGHT",
+			"offsets": [
+				-220,
+				-280
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "left_",
+			"name": "singLEFT",
+			"offsets": [
+				-200,
+				-280
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "spirit down_",
+			"name": "singDOWN",
+			"offsets": [
+				170,
+				110
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

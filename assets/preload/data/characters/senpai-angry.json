@@ -1,0 +1,68 @@
+{
+	"name": "senpai-angry",
+	"startingAnim": "idle",
+	"asset": "senpai",
+	"barColor": "FFFFAA6F",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Angry Senpai Idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Angry Senpai UP NOTE",
+			"name": "singUP",
+			"offsets": [
+				5,
+				37
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Angry Senpai LEFT NOTE",
+			"name": "singLEFT",
+			"offsets": [
+				40,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Angry Senpai RIGHT NOTE",
+			"name": "singRIGHT",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Angry Senpai DOWN NOTE",
+			"name": "singDOWN",
+			"offsets": [
+				14,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

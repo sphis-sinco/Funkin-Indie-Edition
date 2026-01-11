@@ -1,0 +1,68 @@
+{
+	"name": "monster-christmas",
+	"startingAnim": "idle",
+	"asset": "monsterChristmas",
+	"barColor": "FFF3FF6E",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "monster idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "monster up note",
+			"name": "singUP",
+			"offsets": [
+				-20,
+				50
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "monster down",
+			"name": "singDOWN",
+			"offsets": [
+				-40,
+				-94
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Monster left note",
+			"name": "singLEFT",
+			"offsets": [
+				-30,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Monster Right note",
+			"name": "singRIGHT",
+			"offsets": [
+				-51,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

@@ -1,0 +1,132 @@
+{
+	"name": "parents-christmas",
+	"startingAnim": "idle",
+	"asset": "mom_dad_christmas_assets",
+	"barColor": "FF9A00F8",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Parent Christmas Idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Up Note Dad",
+			"name": "singUP",
+			"offsets": [
+				-47,
+				24
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Down Note Dad",
+			"name": "singDOWN",
+			"offsets": [
+				-31,
+				-29
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Left Note Dad",
+			"name": "singLEFT",
+			"offsets": [
+				-30,
+				16
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Right Note Dad",
+			"name": "singRIGHT",
+			"offsets": [
+				-1,
+				-23
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Up Note Mom",
+			"name": "singUP-alt",
+			"offsets": [
+				-47,
+				24
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Down Note Mom",
+			"name": "singDOWN-alt",
+			"offsets": [
+				-30,
+				-27
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Left Note Mom",
+			"name": "singLEFT-alt",
+			"offsets": [
+				-30,
+				15
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Right Note Mom",
+			"name": "singRIGHT-alt",
+			"offsets": [
+				-1,
+				-24
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Parent Christmas Idle",
+			"name": "idleLoop",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": true,
+			"frameIndices": [
+				11,
+				12
+			],
+			"flipY": false,
+			"frameRate": 12
+		}
+	]
+}

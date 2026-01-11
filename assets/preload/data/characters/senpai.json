@@ -1,0 +1,68 @@
+{
+	"name": "senpai",
+	"startingAnim": "idle",
+	"asset": "senpai",
+	"barColor": "FFFFAA6F",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "Senpai Idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "SENPAI UP NOTE",
+			"name": "singUP",
+			"offsets": [
+				5,
+				37
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "SENPAI LEFT NOTE",
+			"name": "singLEFT",
+			"offsets": [
+				40,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "SENPAI RIGHT NOTE",
+			"name": "singRIGHT",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "SENPAI DOWN NOTE",
+			"name": "singDOWN",
+			"offsets": [
+				14,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

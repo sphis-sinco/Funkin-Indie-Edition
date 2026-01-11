@@ -1,0 +1,68 @@
+{
+	"name": "monster",
+	"startingAnim": "idle",
+	"asset": "Monster_Assets",
+	"barColor": "FFF3FF6E",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "monster idle",
+			"name": "idle",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "monster up note",
+			"name": "singUP",
+			"offsets": [
+				-20,
+				94
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "monster down",
+			"name": "singDOWN",
+			"offsets": [
+				-50,
+				-80
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Monster left note",
+			"name": "singLEFT",
+			"offsets": [
+				-30,
+				20
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Monster Right note",
+			"name": "singRIGHT",
+			"offsets": [
+				-51,
+				30
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

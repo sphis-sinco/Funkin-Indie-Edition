@@ -1,0 +1,56 @@
+{
+	"name": "bf-pixel-dead",
+	"startingAnim": "firstDeath",
+	"asset": "bfPixelsDEAD",
+	"barColor": "FF31B0D1",
+	"animations": [
+		{
+			"flipX": false,
+			"prefix": "BF Dies pixel",
+			"name": "singUP",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "BF Dies pixel",
+			"name": "firstDeath",
+			"offsets": [
+				0,
+				0
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "Retry Loop",
+			"name": "deathLoop",
+			"offsets": [
+				-30,
+				-12
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		},
+		{
+			"flipX": false,
+			"prefix": "RETRY CONFIRM",
+			"name": "deathConfirm",
+			"offsets": [
+				-30,
+				-12
+			],
+			"looped": false,
+			"flipY": false,
+			"frameRate": 24
+		}
+	]
+}

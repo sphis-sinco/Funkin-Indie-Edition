@@ -32,9 +32,9 @@ class KeyBinds
 		FlxG.save.data.resetBind = "R";
 		FlxG.save.data.gpresetBind = "SELECT";
 
-		FlxG.sound.muteKeys = ["ZERO", "NUMPADZERO"];
-		FlxG.sound.volumeDownKeys = ["MINUS", "NUMPADMINUS"];
-		FlxG.sound.volumeUpKeys = ["PLUS", "NUMPADPLUS"];
+		FlxG.sound.muteKeys = [FlxKey.fromString(FlxG.save.data.muteBind)];
+		FlxG.sound.volumeDownKeys = [FlxKey.fromString(FlxG.save.data.volDownBind)];
+		FlxG.sound.volumeUpKeys = [FlxKey.fromString(FlxG.save.data.volUpBind)];
 		PlayerSettings.player1.controls.loadKeyBinds();
 	}
 
@@ -124,5 +124,9 @@ class KeyBinds
 		}
 
 		trace('${FlxG.save.data.leftBind}-${FlxG.save.data.downBind}-${FlxG.save.data.upBind}-${FlxG.save.data.rightBind}');
+		
+		FlxG.sound.muteKeys = [FlxKey.fromString(FlxG.save.data.muteBind)];
+		FlxG.sound.volumeDownKeys = [FlxKey.fromString(FlxG.save.data.volDownBind)];
+		FlxG.sound.volumeUpKeys = [FlxKey.fromString(FlxG.save.data.volUpBind)];
 	}
 }

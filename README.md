@@ -1,6 +1,8 @@
 # Kade Engine Continued
 Boredom and being pretty and not wanting to have modern quality of life features unless I add them myself
 
+[DOCS](./docs/README.md)
+
 # Credits
 ## Friday Night Funkin'
  - [ninjamuffin99](https://twitter.com/ninja_muffin99) - Programming

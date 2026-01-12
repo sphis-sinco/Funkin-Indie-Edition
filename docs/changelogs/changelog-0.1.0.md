@@ -1,6 +1,6 @@
 # 0.1.0 (1/11/2026)
 
-- 💖 These changes are compared to Kade Engine 1.8.0
+💖 These changes are compared to Kade Engine 1.8.0
 
 ## Removed
 
@@ -24,7 +24,6 @@
 
 ## Changed
 
-- The versions displayed on the main menu are on the top left now
 - 💖 "Reset Settings" is now a full reset of ALL your settings
 - 💖 Pressing your RESET key in freeplay with repopulate the song data
 - Freeplay songdata population now only happens if when entering freeplay there is no song data to be found

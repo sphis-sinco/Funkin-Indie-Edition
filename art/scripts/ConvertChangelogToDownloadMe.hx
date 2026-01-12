@@ -19,8 +19,8 @@ class ConvertChangelogToDownloadMe
 		var newDownloadMe:String = version + ';\n';
 
 		for (line in changelog)
-			if (line.startsWith('- 💖'))
-				newDownloadMe += line.replace('- 💖', '-').replace('`', '"') + '\n';
+			if (line.contains('💖'))
+				newDownloadMe += line.replace('💖 ', '').replace('`', '"') + '\n';
 
 		Sys.println('Generated version.downloadMe:\n');
 		Sys.println(newDownloadMe);

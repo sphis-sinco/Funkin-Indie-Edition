@@ -51,6 +51,8 @@ class MergeInto
 				trace('Yes');
 				Sys.command('git', ['checkout', targetBranch]);
 				Sys.command('git', ['merge', curBranch]);
+				Sys.command('git', ['push']);
+				Sys.command('git', ['checkout', curBranch]);
 			case 'n':
 				trace('No, okay.');
 			default:

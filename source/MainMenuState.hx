@@ -135,7 +135,7 @@ class MainMenuState extends MusicBeatState
 			versionShit.text += "\nKade Engine: " + kadeEngineVer;
 			versionShit.text += "\nIndie Edition: " + indieEditionVer;
 		}
-		versionShit.y -= versionShit.height + 18;
+		versionShit.y -= versionShit.height + 5;
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

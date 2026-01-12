@@ -119,6 +119,7 @@
 
 	<!--In case you want to use the addons package-->
 	<haxelib name="flixel-addons" />
+
 	<haxelib name="hscript" />
 
 	<haxelib name="actuate" />
@@ -126,7 +127,9 @@
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
+
 	<haxelib name="polymod"/>
+
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="linc_luajit" if="desktop"/>
 	<haxelib name="hxvm-luajit" if="desktop"/>
@@ -205,5 +208,25 @@
 
 	<!-- Defines whether the Mods menu will display before launching. -->
   <haxedef name="FEATURE_MODCORE" if="desktop" />
+
+  	<!-- Options for Polymod -->
+	<section if="polymod">
+		<!-- Turns on additional debug logging. -->
+		<haxedef name="POLYMOD_DEBUG" value="true" />
+		<!-- The file extension to use for script files. -->
+		<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".hx" />
+		<!-- Which asset library to use for scripts. -->
+		<haxedef name="POLYMOD_SCRIPT_LIBRARY" value="default" />
+		<!-- The base path from which scripts should be accessed. -->
+		<haxedef name="POLYMOD_ROOT_PATH" value="" />
+		<!-- Determines the subdirectory of the mod folder used for file appending. -->
+		<haxedef name="POLYMOD_APPEND_FOLDER" value="_append" />
+		<!-- Determines the subdirectory of the mod folder used for file merges. -->
+		<haxedef name="POLYMOD_MERGE_FOLDER" value="_merge" />
+		<!-- Determines the file in the mod folder used for metadata. -->
+		<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
+		<!-- Determines the file in the mod folder used for the icon. -->
+		<haxedef name="POLYMOD_MOD_ICON_FILE" value="_polymod_icon.json" />
+	</section>
 
 </project>

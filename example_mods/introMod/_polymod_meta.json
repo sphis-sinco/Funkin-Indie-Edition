@@ -1,8 +1,15 @@
 {
 	"title": "Intro Mod",
 	"description": "This is an example mod.",
-	"author": "MasterEric",
-	"api_version": "0.1.0",
-	"mod_version": "1.0.0",
+	"contributors": [
+		{
+			"name": "EliteMasterEric"
+		},
+		{
+			"name": "Macohi"
+		}
+	],
+	"api_version": "0.2.0",
+	"mod_version": "1.0.1",
 	"license": "GPLv3"
 }

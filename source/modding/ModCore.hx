@@ -1,9 +1,12 @@
+package modding;
+
+import flixel.FlxG;
 #if FEATURE_MODCORE
 import polymod.backends.OpenFLBackend;
 import polymod.backends.PolymodAssets.PolymodAssetType;
-import polymod.format.ParseRules.LinesParseFormat;
-import polymod.format.ParseRules.TextFileFormat;
+import polymod.format.ParseRules;
 import polymod.Polymod;
+import polymod.fs.ZipFileSystem;
 #end
 
 /**
@@ -17,9 +20,13 @@ class ModCore
 	 * 
 	 * Remember to increment the major version if you make breaking changes to mods!
 	 */
-	static final API_VERSION = "0.1.0";
+	static final API_VERSION = ">=0.2.0 <0.3.0";
 
 	static final MOD_DIRECTORY = "mods";
+
+	
+	// Use SysZipFileSystem on native and MemoryZipFilesystem on web.
+	public static var modFileSystem:Null<ZipFileSystem> = null;
 
 	public static function initialize()
 	{
@@ -32,6 +39,7 @@ class ModCore
 	}
 
 	#if FEATURE_MODCORE
+	
 	public static function loadModsById(ids:Array<String>)
 	{
 		Debug.logInfo('Attempting to load ${ids.length} mods...');
@@ -62,6 +70,10 @@ class ModCore
 
 			// Parsing rules for various data formats.
 			parseRules: buildParseRules(),
+
+			// Parse hxc files and register the scripted classes in them.
+			useScriptedClasses: true,
+			loadScriptsAsync: #if html5 true #else false #end,
 		});
 
 		Debug.logInfo('Mod loading complete. We loaded ${loadedModList.length} / ${ids.length} mods.');
@@ -90,6 +102,16 @@ class ModCore
 			Debug.logTrace('  * $item');
 	}
 
+	
+	public static function buildFileSystem():polymod.fs.ZipFileSystem
+	{
+		polymod.Polymod.onError = onPolymodError;
+		return new ZipFileSystem({
+			modRoot: MOD_DIRECTORY,
+			autoScan: true
+		});
+	}
+
 	static function getModIds():Array<String>
 	{
 		Debug.logInfo('Scanning the mods folder...');
@@ -104,6 +126,11 @@ class ModCore
 		var output = polymod.format.ParseRules.getDefault();
 		// Ensure TXT files have merge support.
 		output.addType("txt", TextFileFormat.LINES);
+		// Ensure script files have merge support.
+		output.addType('hscript', TextFileFormat.PLAINTEXT);
+		output.addType('hxs', TextFileFormat.PLAINTEXT);
+		output.addType('hxc', TextFileFormat.PLAINTEXT);
+		output.addType('hx', TextFileFormat.PLAINTEXT);
 
 		// You can specify the format of a specific file, with file extension.
 		// output.addFile("data/introText.txt", TextFileFormat.LINES)
@@ -154,6 +181,25 @@ class ModCore
 						Debug.logError(error.message, null);
 				}
 		}
+	}
+
+	
+	public static function forceReloadAssets():Void
+	{
+		if (modFileSystem == null)
+			modFileSystem = buildFileSystem();
+
+		// Forcibly clear scripts so that scripts can be edited.
+		// ModuleHandler.destroyModules();
+		Polymod.clearScripts();
+
+		// scriptShit();
+
+		loadModsById(getModIds());
+		// ModuleHandler.loadModules();
+
+		if (FlxG.state != null)
+			FlxG.resetState();
 	}
 	#end
 }

@@ -2,7 +2,7 @@
 	"name": "mom",
 	"startingAnim": "idle",
 	"asset": "characters/Mom_Assets",
-	"barColor": "0xFFD8558E",
+	"barColor": "#D8558E",
 	"animations": [
 		{
 			"flipX": false,

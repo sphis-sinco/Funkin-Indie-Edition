@@ -5,7 +5,7 @@
 		"flipX": true
 	},
 	"asset": "characters/BOYFRIEND",
-	"barColor": "0xFF31B0D1",
+	"barColor": "#31B0D1",
 	"animations": [
 		{
 			"flipX": false,

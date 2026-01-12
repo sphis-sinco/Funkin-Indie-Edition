@@ -5,7 +5,7 @@
 		"flipX": true
 	},
 	"asset": "characters/Pico_FNF_assetss",
-	"barColor": "0xFFB7D855",
+	"barColor": "#B7D855",
 	"animations": [
 		{
 			"flipX": false,

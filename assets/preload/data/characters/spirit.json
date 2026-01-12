@@ -6,7 +6,7 @@
 		"packer": true
 	},
 	"asset": "characters/spirit",
-	"barColor": "0xFFFF3C6E",
+	"barColor": "#FF3C6E",
 	"animations": [
 		{
 			"flipX": false,

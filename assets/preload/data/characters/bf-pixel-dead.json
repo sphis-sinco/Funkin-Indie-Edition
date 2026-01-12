@@ -6,7 +6,7 @@
 		"pixel": true
 	},
 	"asset": "characters/bfPixelsDEAD",
-	"barColor": "0xFF31B0D1",
+	"barColor": "#31B0D1",
 	"animations": [
 		{
 			"flipX": false,

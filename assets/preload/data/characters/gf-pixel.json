@@ -5,7 +5,7 @@
 		"pixel": true
 	},
 	"asset": "characters/gfPixel",
-	"barColor": "0xA5004D",
+	"barColor": "#004D",
 	"animations": [
 		{
 			"flipX": false,

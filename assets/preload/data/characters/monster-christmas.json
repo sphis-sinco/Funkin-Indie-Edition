@@ -2,7 +2,7 @@
 	"name": "monster-christmas",
 	"startingAnim": "idle",
 	"asset": "characters/monsterChristmas",
-	"barColor": "0xFFF3FF6E",
+	"barColor": "#F3FF6E",
 	"animations": [
 		{
 			"flipX": false,

@@ -119,7 +119,8 @@ class Character extends FlxSprite
 		else
 		{
 			antialiasing = true;
-			setGraphicSize(Std.int(width * (1 + (data.properties?.scale_addition ?? 0))));
+			if (data.properties?.scale_addition != null)
+				setGraphicSize(Std.int(width * (1 + (data.properties?.scale_addition ?? 0))));
 		}
 
 		flipX = data.properties?.flipX ?? false;

@@ -2,7 +2,8 @@
 	"name": "pico",
 	"startingAnim": "idle",
 	"properties": {
-		"flipX": true
+		"flipX": true,
+		"scale_addition": -0.275
 	},
 	"asset": "characters/Pico_FNF_assetss",
 	"barColor": "#B7D855",

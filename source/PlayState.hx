@@ -2274,7 +2274,7 @@ class PlayState extends MusicBeatState
 			if (FlxG.random.bool(0.1))
 			{
 				trace('GITAROO MAN EASTER EGG');
-				FlxG.switchState(new GitarooPause());
+				FlxG.switchState(() -> new GitarooPause());
 				clean();
 			}
 			else
@@ -2292,7 +2292,7 @@ class PlayState extends MusicBeatState
 			}
 			cannotDie = true;
 
-			FlxG.switchState(new ChartingState());
+			FlxG.switchState(() -> new ChartingState());
 			clean();
 			PlayState.stageTesting = false;
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -2333,7 +2333,7 @@ class PlayState extends MusicBeatState
 			iconP2.animation.curAnim.curFrame = 0;
 
 		/* if (FlxG.keys.justPressed.NINE)
-			FlxG.switchState(new Charting()); */
+			FlxG.switchState(() -> new Charting()); */
 
 		#if debug
 		if (FlxG.keys.justPressed.SIX)
@@ -2345,7 +2345,7 @@ class PlayState extends MusicBeatState
 				removedVideo = true;
 			}
 
-			FlxG.switchState(new AnimationDebug(dad.curCharacter));
+			FlxG.switchState(() -> new AnimationDebug(dad.curCharacter));
 			clean();
 			PlayState.stageTesting = false;
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -2388,7 +2388,7 @@ class PlayState extends MusicBeatState
 					remove(dad);
 					remove(gf);
 				});
-				FlxG.switchState(new StageDebugState(Stage.curStage, gf.curCharacter, boyfriend.curCharacter, dad.curCharacter));
+				FlxG.switchState(() -> new StageDebugState(Stage.curStage, gf.curCharacter, boyfriend.curCharacter, dad.curCharacter));
 				clean();
 				FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
 				FlxG.stage.removeEventListener(KeyboardEvent.KEY_UP, releaseInput);
@@ -2403,7 +2403,7 @@ class PlayState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.ZERO)
 		{
-			FlxG.switchState(new AnimationDebug(boyfriend.curCharacter));
+			FlxG.switchState(() -> new AnimationDebug(boyfriend.curCharacter));
 			clean();
 			PlayState.stageTesting = false;
 			FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, handleInput);
@@ -2760,7 +2760,7 @@ class PlayState extends MusicBeatState
 					gfSpeed = 1;
 				case 163:
 					// FlxG.sound.music.stop();
-					// FlxG.switchState(new TitleState());
+					// FlxG.switchState(() -> new TitleState());
 			}
 		}
 
@@ -2779,7 +2779,7 @@ class PlayState extends MusicBeatState
 
 				if (FlxG.save.data.InstantRespawn)
 				{
-					FlxG.switchState(new PlayState());
+					FlxG.switchState(() -> new PlayState());
 				}
 				else
 				{
@@ -2802,7 +2802,7 @@ class PlayState extends MusicBeatState
 					+ misses, iconRPC);
 				#end
 				// God i love futabu!! so fucking much (From: McChomk)
-				// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				// FlxG.switchState(() -> new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 			}
 			else
 				health = 1;
@@ -2824,7 +2824,7 @@ class PlayState extends MusicBeatState
 
 				if (FlxG.save.data.InstantRespawn)
 				{
-					FlxG.switchState(new PlayState());
+					FlxG.switchState(() -> new PlayState());
 				}
 				else
 				{
@@ -2847,7 +2847,7 @@ class PlayState extends MusicBeatState
 					+ misses, iconRPC);
 				#end
 
-				// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+				// FlxG.switchState(() -> new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 			}
 		}
 
@@ -3312,7 +3312,7 @@ class PlayState extends MusicBeatState
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 			offsetTesting = false;
-			LoadingState.loadAndSwitchState(new OptionsMenu());
+			LoadingState.loadAndswitchState(() -> new OptionsMenu());
 			clean();
 			FlxG.save.data.offset = offsetTest;
 		}
@@ -3333,7 +3333,7 @@ class PlayState extends MusicBeatState
 				remove(dad);
 				remove(gf);
 			});
-			FlxG.switchState(new StageDebugState(Stage.curStage));
+			FlxG.switchState(() -> new StageDebugState(Stage.curStage));
 		}
 		else
 		{
@@ -3382,7 +3382,7 @@ class PlayState extends MusicBeatState
 						GameplayCustomizeState.freeplayWeek = 1;
 						FlxG.sound.playMusic(Paths.music('freakyMenu'));
 						Conductor.changeBPM(102);
-						FlxG.switchState(new StoryMenuState());
+						FlxG.switchState(() -> new StoryMenuState());
 						clean();
 					}
 
@@ -3425,7 +3425,7 @@ class PlayState extends MusicBeatState
 					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0], diff);
 					FlxG.sound.music.stop();
 
-					LoadingState.loadAndSwitchState(new PlayState());
+					LoadingState.loadAndswitchState(() -> new PlayState());
 					clean();
 				}
 			}
@@ -3448,7 +3448,7 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
-					FlxG.switchState(new FreeplayState());
+					FlxG.switchState(() -> new FreeplayState());
 					clean();
 				}
 			}

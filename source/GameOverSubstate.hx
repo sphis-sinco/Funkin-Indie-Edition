@@ -61,7 +61,7 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		if (FlxG.save.data.InstantRespawn)
 		{
-			LoadingState.loadAndSwitchState(new PlayState());
+			LoadingState.loadAndswitchState(() -> new PlayState());
 		}
 
 		if (controls.BACK)
@@ -77,10 +77,10 @@ class GameOverSubstate extends MusicBeatSubstate
 				GameplayCustomizeState.freeplayStage = 'stage';
 				GameplayCustomizeState.freeplaySong = 'bopeebo';
 				GameplayCustomizeState.freeplayWeek = 1;
-				FlxG.switchState(new StoryMenuState());
+				FlxG.switchState(() -> new StoryMenuState());
 			}
 			else
-				FlxG.switchState(new FreeplayState());
+				FlxG.switchState(() -> new FreeplayState());
 			PlayState.loadRep = false;
 			PlayState.stageTesting = false;
 		}
@@ -128,7 +128,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()
 				{
-					LoadingState.loadAndSwitchState(new PlayState());
+					LoadingState.loadAndswitchState(() -> new PlayState());
 					PlayState.stageTesting = false;
 				});
 			});

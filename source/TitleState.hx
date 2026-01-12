@@ -99,10 +99,10 @@ class TitleState extends MusicBeatState
 		super.create();
 
 		#if FREEPLAY
-		FlxG.switchState(new FreeplayState());
+		FlxG.switchState(() -> new FreeplayState());
 		clean();
 		#elseif CHARTING
-		FlxG.switchState(new ChartingState());
+		FlxG.switchState(() -> new ChartingState());
 		clean();
 		#else
 		#if !cpp
@@ -304,7 +304,7 @@ class TitleState extends MusicBeatState
 						OutdatedSubState.needVer = returnedData[0];
 						OutdatedSubState.currChanges = returnedData[1];
 						OutdatedSubState.justDownloaded = false;
-						FlxG.switchState(new OutdatedSubState());
+						FlxG.switchState(() -> new OutdatedSubState());
 						clean();
 					}
 					else if (MainMenuState.indieEditionVer != FlxG.save.data.lastVersion)
@@ -313,12 +313,12 @@ class TitleState extends MusicBeatState
 						OutdatedSubState.needVer = returnedData[0];
 						OutdatedSubState.currChanges = returnedData[1];
 						OutdatedSubState.justDownloaded = true;
-						FlxG.switchState(new OutdatedSubState());
+						FlxG.switchState(() -> new OutdatedSubState());
 						clean();
 					}
 					else
 					{
-						FlxG.switchState(new MainMenuState());
+						FlxG.switchState(() -> new MainMenuState());
 						clean();
 					}
 				}
@@ -326,7 +326,7 @@ class TitleState extends MusicBeatState
 				http.onError = function(error)
 				{
 					trace('error: $error');
-					FlxG.switchState(new MainMenuState()); // fail but we go anyway
+					FlxG.switchState(() -> new MainMenuState()); // fail but we go anyway
 					clean();
 				}
 

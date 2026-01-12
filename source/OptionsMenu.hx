@@ -426,7 +426,7 @@ class OptionsMenu extends FlxSubState
 				if (escape)
 				{
 					if (!isInPause)
-						FlxG.switchState(new MainMenuState());
+						FlxG.switchState(() -> new MainMenuState());
 					else
 					{
 						PauseSubState.goBack = true;

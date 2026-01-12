@@ -422,7 +422,7 @@ class FreeplayState extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			FlxG.switchState(new MainMenuState());
+			FlxG.switchState(() -> new MainMenuState());
 		}
 		if (controls.RESET)
 		{
@@ -466,7 +466,7 @@ class FreeplayState extends MusicBeatState
 
 		var character = dad ? PlayState.SONG.player2 : PlayState.SONG.player1;
 
-		LoadingState.loadAndSwitchState(new AnimationDebug(character));
+		LoadingState.loadAndswitchState(() -> new AnimationDebug(character));
 	}
 
 	function loadSong(isCharting:Bool = false)
@@ -524,9 +524,9 @@ class FreeplayState extends MusicBeatState
 		PlayState.songMultiplier = rate;
 
 		if (isCharting)
-			LoadingState.loadAndSwitchState(new ChartingState(reloadSong));
+			LoadingState.loadAndswitchState(() -> new ChartingState(reloadSong));
 		else
-			LoadingState.loadAndSwitchState(new PlayState());
+			LoadingState.loadAndswitchState(() -> new PlayState());
 	}
 
 	function changeDiff(change:Int = 0)

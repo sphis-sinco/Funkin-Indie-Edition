@@ -124,6 +124,11 @@ class Paths
 		return getPath('data/$key.lua', TEXT, library);
 	}
 
+	inline static public function haxe(key:String, ?library:String)
+	{
+		return getPath('scripts/$key.hx', TEXT, library);
+	}
+
 	inline static public function luaImage(key:String, ?library:String)
 	{
 		return getPath('data/$key.png', IMAGE, library);

@@ -1,5 +1,6 @@
 package;
 
+import scripting.Script;
 import openfl.display.Bitmap;
 import lime.app.Application;
 #if FEATURE_DISCORD
@@ -112,6 +113,34 @@ class Main extends Sprite
 		Debug.onGameStart();
 
 		Application.current.window.title = 'Funkin Indie${(Global.DEBUG) ? '*' : ''} ${MainMenuState.indieEditionVer}';
+
+		FlxG.signals.preStateSwitch.add(function()
+		{
+			Script.callOnMiscScripts('preStateSwitch', []);
+		});
+
+		FlxG.signals.preStateCreate.add(function(state:FlxState)
+		{
+			Script.callOnMiscScripts('preStateCreate', [state]);
+		});
+
+		FlxG.signals.postStateSwitch.add(function()
+		{
+			Script.callOnMiscScripts('postStateSwitch', []);
+		});
+
+		FlxG.signals.postUpdate.add(function()
+		{
+			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.P)
+			{
+				trace('reset');
+
+				Script.loadMiscScripts();
+				FlxG.resetState();
+			}
+		});
+
+		Script.loadMiscScripts();
 	}
 
 	var game:FlxGame;

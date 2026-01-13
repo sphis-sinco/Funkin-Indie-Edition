@@ -118,6 +118,7 @@
 
 	<haxelib name="flixel-addons" />
 	<haxelib name="hscript" />
+	<haxelib name="hscript-iris" />
 
 	<haxelib name="actuate" />
 	<haxelib name="extension-webm" /> <!-- Make sure to use

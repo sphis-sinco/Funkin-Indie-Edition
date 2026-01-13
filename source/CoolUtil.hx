@@ -9,6 +9,11 @@ class CoolUtil
 	public static var difficultyArray:Array<String> = ['Easy', "Normal", "Hard"];
 
 	public static var daPixelZoom:Float = 6;
+	
+	public static inline function getMacroAbstractClass(className:String)
+	{
+		return Type.resolveClass('${className}_HSC');
+	}
 
 	public static function difficultyFromInt(difficulty:Int):String
 	{

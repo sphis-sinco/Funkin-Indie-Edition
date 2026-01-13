@@ -1,4 +1,6 @@
-# 0.2.0 (1/??/2026)
+# 0.2.0 (1/13/2026)
 
+- 💖 Added: F3 + P Key combo : Reloads scripts and resets the state
+- 💖 Added: SCRIPTING SUPPORT!! (Right now they're backround things (Misc Scripts!) but they'll be expanded!)
 - Changed: The asterisk (*) appears in indev builds
 - Changed: The outdated screen doesn't show up on debug or indev builds

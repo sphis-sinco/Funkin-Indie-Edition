@@ -52,3 +52,7 @@ As of `0.2.0`, scripts have been supported in Indie Edition
 Added in `0.2.0`, Misc Scripts are background scripts or just scripts without labels.
 
 While simple, they can be VERY powerful.
+
+<video controls src="art/readme/miscScripts.mp4" title="MiscScripts"></video>
+
+With Misc Scripts it's just alot of checking specific values if you want them to do things.

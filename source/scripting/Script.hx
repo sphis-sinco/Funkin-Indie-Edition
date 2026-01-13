@@ -1,5 +1,6 @@
 package scripting;
 
+import polymod.fs.ZipFileSystem;
 import lime.utils.Assets;
 
 using haxe.io.Path;
@@ -35,17 +36,15 @@ class Script extends Iris
 			var dirContent:Array<String> = [];
 			var dirSplit:Array<String> = [];
 
-			#if sys
 			try
 			{
-				dirContent = FileSystem.readDirectory(dir);
+				dirContent = new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).readDirectory(dir);
 			}
 			catch (e)
 			{
 				trace(e);
 				dirContent = [];
 			}
-			#end
 
 			dirSplit = dir.split('/');
 			for (dirPath in Path.directory(Paths.haxe('')).split('/'))

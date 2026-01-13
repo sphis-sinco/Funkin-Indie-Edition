@@ -43,7 +43,12 @@ This game was made with love to Newgrounds and its community. Extra love to Tom 
 
 # Differences
 
-- The engine now compiles with the latest libraries! (obv)
-- Added new `properties` field to character JSONS!
-  - This helps with character specific things
-- Converted all characters to character JSONS!
+## SCRIPTING!
+
+As of `0.2.0`, scripts have been supported in Indie Edition
+
+### Misc Scripts
+
+Added in `0.2.0`, Misc Scripts are background scripts or just scripts without labels.
+
+While simple, they can be VERY powerful.

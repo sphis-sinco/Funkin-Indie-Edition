@@ -213,6 +213,8 @@
 
   	<!-- Options for Polymod -->
 	<section if="polymod">
+		<haxedef name="POLYMOD_USE_NAMESPACE" value="false" />
+
 		<!-- Turns on additional debug logging. -->
 		<haxedef name="POLYMOD_DEBUG" value="true" />
 		<!-- The file extension to use for script files. -->

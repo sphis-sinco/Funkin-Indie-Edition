@@ -59,6 +59,14 @@ class TitleState extends MusicBeatState
 
 		FlxG.autoPause = false;
 
+		FlxG.save.bind('indieedition', 'Macohi');
+
+		PlayerSettings.init();
+
+		SaveData.initSave();
+		ModCore.initialize(); // this is for enabledMods
+
+		KeyBinds.keyCheck();
 		// It doesn't reupdate the list before u restart rn lmao
 
 		NoteskinHelpers.updateNoteskins();

@@ -71,6 +71,8 @@ class Script extends Iris
 		}
 
 		readDir(Path.directory(Paths.haxe('')));
+
+		callOnMiscScripts('miscScriptsLoaded');
 	}
 
 	public static function callOnMiscScripts(method:String, ?params:Array<Dynamic>):Map<String, Dynamic>
@@ -162,6 +164,11 @@ class Script extends Iris
 			"Conductor" => Conductor,
 
 			"CoolUtil" => CoolUtil,
+			"Debug" => Debug,
+
+			"ModCore" => ModCore,
+
+			"Discord" => Discord,
 
 			"MiscScript" => MiscScript,
 			"Script" => Script,

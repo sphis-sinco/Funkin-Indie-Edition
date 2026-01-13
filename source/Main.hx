@@ -114,19 +114,39 @@ class Main extends Sprite
 
 		Application.current.window.title = 'Funkin Indie${(Global.DEBUG) ? '*' : ''} ${MainMenuState.indieEditionVer}';
 
-		FlxG.signals.preStateSwitch.add(function()
-		{
-			Script.callOnMiscScripts('preStateSwitch', []);
-		});
-
 		FlxG.signals.preStateCreate.add(function(state:FlxState)
 		{
 			Script.callOnMiscScripts('preStateCreate', [state]);
 		});
 
+		FlxG.signals.postStateCreate.add(function(state:FlxState)
+		{
+			Script.callOnMiscScripts('postStateCreate', [state]);
+		});
+		
+		FlxG.signals.preStateSwitch.add(function()
+		{
+			Script.callOnMiscScripts('preStateSwitch', []);
+		});
+
 		FlxG.signals.postStateSwitch.add(function()
 		{
 			Script.callOnMiscScripts('postStateSwitch', []);
+		});
+
+		FlxG.signals.focusGained.add(function()
+		{
+			Script.callOnMiscScripts('focusGained', []);
+		});
+
+		FlxG.signals.focusLost.add(function()
+		{
+			Script.callOnMiscScripts('focusLost', []);
+		});
+
+		FlxG.signals.preUpdate.add(function()
+		{
+			Script.callOnMiscScripts('preUpdate', []);
 		});
 
 		FlxG.signals.postUpdate.add(function()
@@ -138,6 +158,8 @@ class Main extends Sprite
 				Script.loadMiscScripts();
 				FlxG.resetState();
 			}
+
+			Script.callOnMiscScripts('postUpdate', []);
 		});
 
 		Script.loadMiscScripts();

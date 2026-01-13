@@ -104,6 +104,8 @@ class ModCore
 		var output = polymod.format.ParseRules.getDefault();
 		// Ensure TXT files have merge support.
 		output.addType("txt", TextFileFormat.LINES);
+		// Ensure HAXE files have merge support.
+		output.addType("hx", TextFileFormat.PLAINTEXT);
 
 		// You can specify the format of a specific file, with file extension.
 		// output.addFile("data/introText.txt", TextFileFormat.LINES)

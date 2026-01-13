@@ -76,6 +76,8 @@ class MusicBeatState extends FlxUIState
 			trace('reg ' + transIn.region);
 
 		super.create();
+		
+		Script.callOnMiscScripts('postUpdate', []);
 	}
 
 	override function update(elapsed:Float)

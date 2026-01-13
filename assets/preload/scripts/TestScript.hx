@@ -1,0 +1,4 @@
+function miscScriptsLoaded()
+{
+    trace('Hey');
+}

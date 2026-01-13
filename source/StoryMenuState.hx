@@ -21,7 +21,7 @@ using StringTools;
 
 class StoryMenuState extends MusicBeatState
 {
-	var scoreText:FlxText;
+	public var scoreText:FlxText;
 
 	static function weekData():Array<Dynamic>
 	{
@@ -36,11 +36,11 @@ class StoryMenuState extends MusicBeatState
 		];
 	}
 
-	var curDifficulty:Int = 1;
+	public var curDifficulty:Int = 1;
 
 	public static var weekUnlocked:Array<Bool> = [];
 
-	var weekCharacters:Array<Dynamic> = [
+	public var weekCharacters:Array<Dynamic> = [
 		['', 'bf', 'gf'],
 		['dad', 'bf', 'gf'],
 		['spooky', 'bf', 'gf'],
@@ -50,23 +50,23 @@ class StoryMenuState extends MusicBeatState
 		['senpai', 'bf', 'gf']
 	];
 
-	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/weekNames'));
+	public var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('data/weekNames'));
 
-	var txtWeekTitle:FlxText;
+	public var txtWeekTitle:FlxText;
 
-	var curWeek:Int = 0;
+	public var curWeek:Int = 0;
 
-	var txtTracklist:FlxText;
+	public var txtTracklist:FlxText;
 
-	var grpWeekText:FlxTypedGroup<MenuItem>;
-	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
+	public var grpWeekText:FlxTypedGroup<MenuItem>;
+	public var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
 
-	var grpLocks:FlxTypedGroup<FlxSprite>;
+	public var grpLocks:FlxTypedGroup<FlxSprite>;
 
-	var difficultySelectors:FlxGroup;
-	var sprDifficulty:FlxSprite;
-	var leftArrow:FlxSprite;
-	var rightArrow:FlxSprite;
+	public var difficultySelectors:FlxGroup;
+	public var sprDifficulty:FlxSprite;
+	public var leftArrow:FlxSprite;
+	public var rightArrow:FlxSprite;
 
 	function unlockWeeks():Array<Bool>
 	{
@@ -85,6 +85,8 @@ class StoryMenuState extends MusicBeatState
 		}
 		return weeks;
 	}
+
+	public static var instance:StoryMenuState = null;
 
 	override function create()
 	{
@@ -108,6 +110,7 @@ class StoryMenuState extends MusicBeatState
 				Conductor.changeBPM(102);
 			}
 		}
+		instance = this;
 
 		persistentUpdate = persistentDraw = true;
 
@@ -327,6 +330,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;
+			instance = null;
 			FlxG.switchState(() -> new MainMenuState());
 		}
 
@@ -373,6 +377,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
+				instance = null;
 				LoadingState.loadAndSwitchState(new PlayState(), true);
 			});
 		}

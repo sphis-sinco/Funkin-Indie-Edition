@@ -217,6 +217,7 @@ class ResultsScreen extends FlxSubState
 			else
 				FlxG.switchState(() -> new FreeplayState());
 			PlayState.instance.clean();
+			PlayState.instance = null;
 		}
 
 		if (FlxG.keys.justPressed.F1 && !PlayState.loadRep)

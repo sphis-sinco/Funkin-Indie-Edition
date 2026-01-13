@@ -22,18 +22,18 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	var curSelected:Int = 0;
+	public var curSelected:Int = 0;
 
-	var menuItems:FlxTypedGroup<FlxSprite>;
+	public var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
+	public var optionShit:Array<String> = ['story mode', 'freeplay', 'donate', 'options'];
 	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
+	public var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
 
-	var newGaming:FlxText;
-	var newGaming2:FlxText;
+	public var newGaming:FlxText;
+	public var newGaming2:FlxText;
 
 	public static var firstStart:Bool = true;
 
@@ -45,14 +45,16 @@ class MainMenuState extends MusicBeatState
 	{
 		return Application.current.meta.get('version') + indieEditionVer_nightly;
 	}
-	
+
 	public static var kadeEngineVer:String = '1.8';
 	public static var gameVer:String = "0.2.7.1";
 
-	var magenta:FlxSprite;
-	var camFollow:FlxObject;
+	public var magenta:FlxSprite;
+	public var camFollow:FlxObject;
 
 	public static var finishedFunnyMove:Bool = false;
+
+	public static var instance:MainMenuState = null;
 
 	override function create()
 	{
@@ -68,6 +70,7 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
+		instance = this;
 
 		persistentUpdate = persistentDraw = true;
 
@@ -193,6 +196,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.BACK)
 			{
+				instance = null;
 				FlxG.switchState(() -> new TitleState());
 			}
 
@@ -259,14 +263,17 @@ class MainMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'story mode':
+				instance = null;
 				FlxG.switchState(() -> new StoryMenuState());
 				trace("Story Menu Selected");
 			case 'freeplay':
+				instance = null;
 				FlxG.switchState(() -> new FreeplayState());
 
 				trace("Freeplay Menu Selected");
 
 			case 'options':
+				instance = null;
 				FlxG.switchState(() -> new OptionsDirect());
 		}
 	}

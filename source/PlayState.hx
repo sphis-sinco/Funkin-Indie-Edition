@@ -3446,6 +3446,7 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
+					instance = null;
 					FlxG.switchState(() -> new FreeplayState());
 					clean();
 				}

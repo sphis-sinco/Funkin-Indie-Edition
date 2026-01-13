@@ -30,26 +30,26 @@ class FreeplayState extends MusicBeatState
 {
 	public static var songs:Array<FreeplaySongMetadata> = [];
 
-	var selector:FlxText;
+	public var selector:FlxText;
 
 	public static var rate:Float = 1.0;
 
 	public static var curSelected:Int = 0;
 	public static var curDifficulty:Int = 1;
 
-	var scoreText:FlxText;
-	var comboText:FlxText;
-	var diffText:FlxText;
-	var diffCalcText:FlxText;
-	var previewtext:FlxText;
-	var lerpScore:Int = 0;
-	var intendedScore:Int = 0;
-	var combo:String = '';
+	public var scoreText:FlxText;
+	public var comboText:FlxText;
+	public var diffText:FlxText;
+	public var diffCalcText:FlxText;
+	public var previewtext:FlxText;
+	public var lerpScore:Int = 0;
+	public var intendedScore:Int = 0;
+	public var combo:String = '';
 
-	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var curPlaying:Bool = false;
+	public var grpSongs:FlxTypedGroup<Alphabet>;
+	public var curPlaying:Bool = false;
 
-	private var iconArray:Array<HealthIcon> = [];
+	public var iconArray:Array<HealthIcon> = [];
 
 	public static var openedPreview = false;
 
@@ -72,9 +72,13 @@ class FreeplayState extends MusicBeatState
 
 	public static var list:Array<String> = [];
 
+	public static var instance:FreeplayState = null;
+
 	override function create()
 	{
 		clean();
+
+		instance = this;
 
 		cached = false;
 
@@ -274,7 +278,7 @@ class FreeplayState extends MusicBeatState
 			trace('loaded diffs for ' + songId);
 			FreeplayState.songs.push(meta);
 		}
-		
+
 		cacheSongs();
 	}
 
@@ -466,6 +470,7 @@ class FreeplayState extends MusicBeatState
 
 		var character = dad ? PlayState.SONG.player2 : PlayState.SONG.player1;
 
+		instance = null;
 		LoadingState.loadAndSwitchState(new AnimationDebug(character));
 	}
 
@@ -523,6 +528,7 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.songMultiplier = rate;
 
+		instance = null;
 		if (isCharting)
 			LoadingState.loadAndSwitchState(new ChartingState(reloadSong));
 		else

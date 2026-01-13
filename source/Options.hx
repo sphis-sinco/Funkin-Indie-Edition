@@ -1825,7 +1825,10 @@ class EnableAllMods extends Option
 		ModCore.reloadMods();
 
 		display = updateDisplay();
+		
+		Main.reloadReset();
 		FlxG.resetState();
+
 		return true;
 	}
 
@@ -1850,7 +1853,10 @@ class DisableAllMods extends Option
 		ModCore.reloadMods();
 
 		display = updateDisplay();
+		
+		Main.reloadReset();
 		FlxG.resetState();
+
 		return true;
 	}
 
@@ -1895,7 +1901,9 @@ class ToggleMod extends Option
 			return false;
 
 		ModList.toggleMod(currentMod);
-		ModCore.reloadMods();
+
+		Main.reloadReset();
+		FlxG.resetState();
 
 		display = updateDisplay();
 		
@@ -1919,7 +1927,7 @@ class ToggleMod extends Option
 
 		d += ' ( $currentMod / $status ) ';
 
-		if (indexOfCurMod < ModList.enabledMods.length - 1)
+		if (indexOfCurMod < ModList.enabledMods.length)
 			d += ' >';
 
 		d += ']';

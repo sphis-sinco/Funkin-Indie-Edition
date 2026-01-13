@@ -124,7 +124,7 @@ class Main extends Sprite
 		{
 			Script.callOnMiscScripts('postStateCreate', [state]);
 		});
-		
+
 		FlxG.signals.preStateSwitch.add(function()
 		{
 			Script.callOnMiscScripts('preStateSwitch', []);
@@ -154,17 +154,22 @@ class Main extends Sprite
 		{
 			if (FlxG.keys.pressed.F3 && FlxG.keys.justPressed.P)
 			{
-				trace('reset');
-
-				ModCore.reloadMods();
-				Script.loadMiscScripts();
-				// LoadingState.loadAndSwitchState(new MainMenuState(), true);
+				reloadReset();
 			}
 
 			Script.callOnMiscScripts('postUpdate', []);
 		});
 
 		Script.loadMiscScripts();
+	}
+
+	public static function reloadReset()
+	{
+		trace('reset');
+
+		ModCore.reloadMods();
+		Script.loadMiscScripts();
+		// LoadingState.loadAndSwitchState(new MainMenuState(), true);
 	}
 
 	var game:FlxGame;

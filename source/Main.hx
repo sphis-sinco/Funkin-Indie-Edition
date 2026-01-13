@@ -92,13 +92,7 @@ class Main extends Sprite
 
 		// Run this first so we can see logs.
 		Debug.onInitProgram();
-
-		FlxG.save.bind('indieedition', 'Macohi');
-		PlayerSettings.init();
-		SaveData.initSave();
-		KeyBinds.keyCheck();
-
-		// Gotta run this before any assets get loaded.
+		
 		modding.ModCore.initialize();
 
 		#if !mobile

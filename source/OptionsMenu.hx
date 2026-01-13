@@ -183,7 +183,8 @@ class OptionsMenu extends FlxSubState
 			]),
 			#if FEATURE_MODCORE
 			new OptionCata(getPos(4), 40, "Mods", [
-				new EnableAllMods("Enable every mod thats findable"),
+				new EnableAllMods("Enable every mod disabled"),
+				new DisableAllMods("Disable every mod enabled"),
 				new ToggleMod("Toggle the mod in the parentheses"),
 			]),
 			#end

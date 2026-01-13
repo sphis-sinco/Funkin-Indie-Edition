@@ -1835,6 +1835,31 @@ class EnableAllMods extends Option
 	}
 }
 
+class DisableAllMods extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		for (mod in ModList.enabledMods)
+			ModList.toggleMod(mod);
+		ModCore.reloadMods();
+
+		display = updateDisplay();
+		FlxG.resetState();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Disable All Mods";
+	}
+}
+
 class ToggleMod extends Option
 {
 	var currentMod:String = 'Unknown';

@@ -71,6 +71,7 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 		instance = this;
+		scripting.Script.callOnMiscScripts('setInstance', []);
 
 		persistentUpdate = persistentDraw = true;
 
@@ -196,6 +197,7 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.BACK)
 			{
+				scripting.Script.callOnMiscScripts('destroyInstance', []);
 				instance = null;
 				FlxG.switchState(() -> new TitleState());
 			}
@@ -263,16 +265,19 @@ class MainMenuState extends MusicBeatState
 		switch (daChoice)
 		{
 			case 'story mode':
+				scripting.Script.callOnMiscScripts('destroyInstance', []);
 				instance = null;
 				FlxG.switchState(() -> new StoryMenuState());
 				trace("Story Menu Selected");
 			case 'freeplay':
+				scripting.Script.callOnMiscScripts('destroyInstance', []);
 				instance = null;
 				FlxG.switchState(() -> new FreeplayState());
 
 				trace("Freeplay Menu Selected");
 
 			case 'options':
+				scripting.Script.callOnMiscScripts('destroyInstance', []);
 				instance = null;
 				FlxG.switchState(() -> new OptionsDirect());
 		}

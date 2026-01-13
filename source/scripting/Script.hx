@@ -162,6 +162,8 @@ class Script extends Iris
 			"PauseSubState" => PauseSubState,
 			"StoryMenuState" => StoryMenuState,
 			"TitleState" => TitleState,
+			"OptionsDirect" => OptionsDirect,
+
 			"Paths" => Paths,
 			"Conductor" => Conductor,
 

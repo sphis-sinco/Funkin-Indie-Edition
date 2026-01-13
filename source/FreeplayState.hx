@@ -78,6 +78,7 @@ class FreeplayState extends MusicBeatState
 	{
 		clean();
 
+		scripting.Script.callOnMiscScripts('setInstance', []);
 		instance = this;
 
 		cached = false;
@@ -470,6 +471,7 @@ class FreeplayState extends MusicBeatState
 
 		var character = dad ? PlayState.SONG.player2 : PlayState.SONG.player1;
 
+		scripting.Script.callOnMiscScripts('destroyInstance', []);
 		instance = null;
 		LoadingState.loadAndSwitchState(new AnimationDebug(character));
 	}
@@ -528,6 +530,7 @@ class FreeplayState extends MusicBeatState
 
 		PlayState.songMultiplier = rate;
 
+		scripting.Script.callOnMiscScripts('destroyInstance', []);
 		instance = null;
 		if (isCharting)
 			LoadingState.loadAndSwitchState(new ChartingState(reloadSong));

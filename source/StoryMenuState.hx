@@ -110,6 +110,7 @@ class StoryMenuState extends MusicBeatState
 				Conductor.changeBPM(102);
 			}
 		}
+		scripting.Script.callOnMiscScripts('setInstance', []);
 		instance = this;
 
 		persistentUpdate = persistentDraw = true;
@@ -330,6 +331,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			movedBack = true;
+			scripting.Script.callOnMiscScripts('destroyInstance', []);
 			instance = null;
 			FlxG.switchState(() -> new MainMenuState());
 		}
@@ -377,6 +379,7 @@ class StoryMenuState extends MusicBeatState
 			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
+				scripting.Script.callOnMiscScripts('destroyInstance', []);
 				instance = null;
 				LoadingState.loadAndSwitchState(new PlayState(), true);
 			});

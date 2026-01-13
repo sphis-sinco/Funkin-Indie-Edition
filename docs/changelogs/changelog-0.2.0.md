@@ -1,5 +1,6 @@
 # 0.2.0 (1/13/2026)
 
+- Fixed: PlayState instance is nulled properly
 - Added: StoryMenuState has an instance
 - Added: FreeplayState has an instance
 - Added: MainMenuState has an instance

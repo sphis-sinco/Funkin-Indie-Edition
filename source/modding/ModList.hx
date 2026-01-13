@@ -24,6 +24,8 @@ class ModList
 	{
 		enabledMods = [];
 
+		if (!FlxG.save.isBound || FlxG.save.isEmpty())
+			return;
 		if (FlxG.save.data.enabledMods == null)
 			return;
 

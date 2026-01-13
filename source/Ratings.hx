@@ -92,7 +92,7 @@ class Ratings
 		return ranking;
 	}
 
-	public static var timingWindows:Array<Float> = [];
+	public static var timingWindows = [];
 
 	public static function judgeNote(noteDiff:Float)
 	{
@@ -100,7 +100,7 @@ class Ratings
 		for (index in 0...timingWindows.length) // based on 4 timing windows, will break with anything else
 		{
 			var time = timingWindows[index];
-			var nextTime:Float = index + 1 > timingWindows.length - 1 ? 0 : timingWindows[index + 1];
+			var nextTime = index + 1 > timingWindows.length - 1 ? 0 : timingWindows[index + 1];
 			if (diff < time && diff >= nextTime)
 			{
 				switch (index)

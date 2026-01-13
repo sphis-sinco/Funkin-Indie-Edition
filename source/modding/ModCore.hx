@@ -1,7 +1,11 @@
 package modding;
 
 import flixel.util.FlxSignal;
-import modding.scripting.ScriptManager;
+import modding.events.*;
+import modding.events.bases.*;
+import modding.events.basic.*;
+import modding.events.simple.*;
+import modding.scripting.*;
 import flixel.FlxG;
 #if FEATURE_MODCORE
 import polymod.backends.OpenFLBackend;

@@ -6,6 +6,9 @@ class ModList
 {
 	public static var enabledMods:Array<String> = [];
 
+	public static function getModEnabled(id:String):Bool
+        return enabledMods.contains(id);
+    
 	public static function toggleMod(id:String)
 	{
 		if (enabledMods.contains(id))

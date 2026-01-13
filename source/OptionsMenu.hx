@@ -114,7 +114,16 @@ class OptionsMenu extends FlxSubState
 	public var descText:FlxText;
 	public var descBack:FlxSprite;
 
-	public static var expectedOptionsCatCount:Int = 5;
+	public static var expectedOptionsCatCount(get, never):Int;
+
+	static function get_expectedOptionsCatCount():Int
+	{
+		var eocc = 5;
+		#if !FEATURE_MODCORE
+		eocc--;
+		#end
+		return eocc;
+	}
 
 	override function create()
 	{
@@ -172,11 +181,12 @@ class OptionsMenu extends FlxSubState
 				new LockWeeksOption("Reset your story mode progress. This is irreversible!"),
 				new ResetSettings("Reset ALL your settings. This is irreversible!")
 			]),
+			#if FEATURE_MODCORE
 			new OptionCata(getPos(4), 40, "Mods", [
-				new ResetScoreOption("Reset your score on all songs and weeks. This is irreversible!"),
-				new LockWeeksOption("Reset your story mode progress. This is irreversible!"),
-				new ResetSettings("Reset ALL your settings. This is irreversible!"),
+				new EnableAllMods("Enable every mod thats findable"),
+				new ToggleMod("Toggle the mod above"),
 			]),
+			#end
 			new OptionCata(-1, 125, "Editing Keybinds", [
 				new LeftKeybind("The left note's keybind"),
 				new DownKeybind("The down note's keybind"),

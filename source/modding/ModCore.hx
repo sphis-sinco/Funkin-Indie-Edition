@@ -28,16 +28,38 @@ class ModCore
 		#if FEATURE_MODCORE
 		Debug.logInfo("Initializing ModCore...");
 		ModList.init();
-		loadModsById(ModList.enabledMods);
 		#else
 		Debug.logInfo("ModCore not initialized; not supported on this platform.");
 		#end
+		reloadMods();
+	}
+
+	public static function reloadMods()
+	{
+		#if FEATURE_MODCORE
+		loadModsById(ModList.enabledMods);
+		#end
+	}
+
+	public static function getModIds():Array<String>
+	{
+		#if FEATURE_MODCORE
+		Debug.logInfo('Scanning the mods folder...');
+		var modMetadata = Polymod.scan({modRoot: MOD_DIRECTORY});
+		Debug.logInfo('Found ${modMetadata.length} mods when scanning.');
+		var modIds = [for (i in modMetadata) i.id];
+		#else
+		var modIds = [];
+		#end
+		return modIds;
 	}
 
 	#if FEATURE_MODCORE
 	public static function loadModsById(ids:Array<String>)
 	{
 		Debug.logInfo('Attempting to load ${ids.length} mods...');
+		for (id in ids)
+			Debug.logTrace('  * $id');
 		var loadedModList = polymod.Polymod.init({
 			// Root directory for all mods.
 			modRoot: MOD_DIRECTORY,
@@ -93,15 +115,6 @@ class ModCore
 			Debug.logTrace('  * $item');
 	}
 
-	static function getModIds():Array<String>
-	{
-		Debug.logInfo('Scanning the mods folder...');
-		var modMetadata = Polymod.scan({modRoot: MOD_DIRECTORY});
-		Debug.logInfo('Found ${modMetadata.length} mods when scanning.');
-		var modIds = [for (i in modMetadata) i.id];
-		return modIds;
-	}
-
 	static function buildParseRules():polymod.format.ParseRules
 	{
 		var output = polymod.format.ParseRules.getDefault();
@@ -120,8 +133,16 @@ class ModCore
 		return {
 			assetLibraryPaths: [
 				"default" => "./preload", // ./preload
-				"sm" => "./sm", "songs" => "./songs", "shared" => "./", "tutorial" => "./tutorial",
-				"week1" => "./week1", "week2" => "./week2", "week3" => "./week3", "week4" => "./week4", "week5" => "./week5", "week6" => "./week6"
+				"sm" => "./sm",
+				"songs" => "./songs",
+				"shared" => "./",
+				"tutorial" => "./tutorial",
+				"week1" => "./week1",
+				"week2" => "./week2",
+				"week3" => "./week3",
+				"week4" => "./week4",
+				"week5" => "./week5",
+				"week6" => "./week6"
 			]
 		}
 	}

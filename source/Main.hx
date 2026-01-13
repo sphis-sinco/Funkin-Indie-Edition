@@ -1,5 +1,6 @@
 package;
 
+import modding.ModCore;
 import scripting.Script;
 import openfl.display.Bitmap;
 import lime.app.Application;
@@ -155,6 +156,7 @@ class Main extends Sprite
 			{
 				trace('reset');
 
+				ModCore.reloadMods();
 				Script.loadMiscScripts();
 				// LoadingState.loadAndSwitchState(new MainMenuState(), true);
 			}

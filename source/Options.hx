@@ -1,5 +1,7 @@
 package;
 
+import modding.ModList;
+import modding.ModCore;
 import lime.app.Application;
 import lime.system.DisplayMode;
 import flixel.util.FlxColor;
@@ -1790,7 +1792,7 @@ class ResetSettings extends Option
 			display = updateDisplay();
 			return true;
 		}
-		
+
 		FlxG.save.erase();
 
 		SaveData.initSave();
@@ -1803,5 +1805,82 @@ class ResetSettings extends Option
 	private override function updateDisplay():String
 	{
 		return confirm ? "Confirm Settings Reset" : "Reset Settings";
+	}
+}
+
+class EnableAllMods extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		#if FEATURE_MODCORE
+		@:privateAccess
+		ModList.enabledMods = ModCore.getModIds();
+		#end
+		ModCore.reloadMods();
+
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Enable All Mods";
+	}
+}
+
+class ToggleMod extends Option
+{
+	var currentMod:String = 'Unknown';
+	var i = 0;
+
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	override function left():Bool {
+		i--;
+		display = updateDisplay();
+		return true;
+	}
+
+	override function right():Bool {
+		i--;
+		display = updateDisplay();
+		return true;
+	}
+
+	public override function press():Bool
+	{
+		#if FEATURE_MODCORE
+		@:privateAccess
+		ModList.enabledMods = ModCore.getModIds();
+		#end
+		ModCore.reloadMods();
+
+		display = updateDisplay();
+		return true;
+	}
+
+	private override function updateDisplay():String
+	{
+		currentMod = ModCore.getModIds()[i];
+		var indexOfCurMod = ModList.enabledMods.indexOf(currentMod);
+
+		var d = '[$currentMod / ${ModList.getModEnabled(currentMod) ? 'Enabled' : 'DIsabled'} ]';
+
+		if (indexOfCurMod != 0)
+			d = '< $d';
+		if (indexOfCurMod < ModList.enabledMods.length - 1)
+			d = '$d >';
+
+		return d;
 	}
 }

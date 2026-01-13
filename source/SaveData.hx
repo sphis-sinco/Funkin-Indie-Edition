@@ -162,7 +162,10 @@ class SaveData
 			FlxG.save.data.overrideNoteskins = false;
 
 		if (FlxG.save.data.lastVersion == null)
-			FlxG.save.data.lastVersion = "1.8";
+			FlxG.save.data.lastVersion = "0.0.0";
+
+		if (FlxG.save.data.enabledMods == null)
+			FlxG.save.data.enabledMods = [];
 
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
 

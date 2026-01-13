@@ -10,12 +10,12 @@ class ModList
 	{
 		if (enabledMods.contains(id))
 		{
-            trace('Disabled mod: $id');
+			trace('Disabled mod: $id');
 			enabledMods.remove(id);
 		}
 		else
 		{
-            trace('Enabled mod: $id');
+			trace('Enabled mod: $id');
 			enabledMods.push(id);
 		}
 	}
@@ -24,7 +24,11 @@ class ModList
 	{
 		enabledMods = [];
 
+		if (FlxG.save.data.enabledMods == null)
+			return;
+
 		var savedEM:Array<String> = FlxG.save.data.enabledMods;
+
 		for (mod in savedEM)
 			toggleMod(mod);
 	}

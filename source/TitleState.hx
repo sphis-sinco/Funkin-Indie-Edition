@@ -1,5 +1,6 @@
 package;
 
+import modding.ModCore;
 #if FEATURE_STEPMANIA
 import smTools.SMFile;
 #end
@@ -63,6 +64,7 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 
 		SaveData.initSave();
+		ModCore.initialize(); // this is for enabledMods
 
 		KeyBinds.keyCheck();
 		// It doesn't reupdate the list before u restart rn lmao

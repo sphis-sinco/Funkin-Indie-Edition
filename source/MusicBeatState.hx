@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxSignal;
 import flixel.math.FlxMath;
 import flixel.FlxCamera;
 import flixel.text.FlxText;
@@ -57,6 +58,8 @@ class MusicBeatState extends FlxUIState
 		}
 	}
 
+	public static var postStateCreate:FlxSignal = new FlxSignal();
+
 	override function create()
 	{
 		if (initSave)
@@ -76,6 +79,8 @@ class MusicBeatState extends FlxUIState
 			trace('reg ' + transIn.region);
 
 		super.create();
+
+		postStateCreate.dispatch(FlxG.state);
 	}
 
 	override function update(elapsed:Float)

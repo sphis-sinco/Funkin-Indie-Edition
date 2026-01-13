@@ -6,11 +6,38 @@ using StringTools;
 
 class CoolUtil
 {
+	public static function getCurrentState():String
+	{
+		if (FlxG.state == null)
+			return 'Unknown';
+		var cls = Type.getClass(FlxG.state);
+		if (cls == null)
+			return 'Unknown';
+		var name = Type.getClassName(cls);
+		return name != null ? name.split('.').pop() : 'Unknown';
+	}
+
+	public static function classFieldsToString(theclass:Any, excludeFieldsInToString:Array<String> = []):String
+	{
+		var eventName:String = Type.getClassName(this);
+		var fieldsList:String = '';
+
+		var fi = 0;
+		for (field in Reflect.fields(this))
+		{
+			if (!excludeFieldsInToString.contains(field))
+				fieldsList += '${fi > 0?', '} $field: ${Reflect.field(this, field)}';
+			fi++;
+		}
+
+		return '$eventName($fieldsList)';
+	}
+
 	public static inline function getMacroAbstractClass(className:String)
 	{
 		return Type.resolveClass('${className}_HSC');
 	}
-	
+
 	public static var difficultyArray:Array<String> = ['Easy', "Normal", "Hard"];
 
 	public static var daPixelZoom:Float = 6;

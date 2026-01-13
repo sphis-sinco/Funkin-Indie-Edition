@@ -1,5 +1,7 @@
 package modding;
 
+import flixel.util.FlxSignal;
+import modding.scripting.ScriptManager;
 import flixel.FlxG;
 #if FEATURE_MODCORE
 import polymod.backends.OpenFLBackend;
@@ -24,7 +26,6 @@ class ModCore
 
 	static final MOD_DIRECTORY = "mods";
 
-	
 	// Use SysZipFileSystem on native and MemoryZipFilesystem on web.
 	public static var modFileSystem:Null<ZipFileSystem> = null;
 
@@ -39,7 +40,6 @@ class ModCore
 	}
 
 	#if FEATURE_MODCORE
-	
 	public static function loadModsById(ids:Array<String>)
 	{
 		Debug.logInfo('Attempting to load ${ids.length} mods...');
@@ -102,7 +102,6 @@ class ModCore
 			Debug.logTrace('  * $item');
 	}
 
-	
 	public static function buildFileSystem():polymod.fs.ZipFileSystem
 	{
 		polymod.Polymod.onError = onPolymodError;
@@ -142,8 +141,16 @@ class ModCore
 		return {
 			assetLibraryPaths: [
 				"default" => "./preload", // ./preload
-				"sm" => "./sm", "songs" => "./songs", "shared" => "./", "tutorial" => "./tutorial",
-				"week1" => "./week1", "week2" => "./week2", "week3" => "./week3", "week4" => "./week4", "week5" => "./week5", "week6" => "./week6"
+				"sm" => "./sm",
+				"songs" => "./songs",
+				"shared" => "./",
+				"tutorial" => "./tutorial",
+				"week1" => "./week1",
+				"week2" => "./week2",
+				"week3" => "./week3",
+				"week4" => "./week4",
+				"week5" => "./week5",
+				"week6" => "./week6"
 			]
 		}
 	}
@@ -183,23 +190,111 @@ class ModCore
 		}
 	}
 
-	
 	public static function forceReloadAssets():Void
 	{
 		if (modFileSystem == null)
 			modFileSystem = buildFileSystem();
 
 		// Forcibly clear scripts so that scripts can be edited.
-		// ModuleHandler.destroyModules();
+		ScriptManager.destroyScripts();
 		Polymod.clearScripts();
 
-		// scriptShit();
+		scriptInit();
 
 		loadModsById(getModIds());
-		// ModuleHandler.loadModules();
+		ScriptManager.loadScripts();
 
 		if (FlxG.state != null)
 			FlxG.resetState();
+	}
+
+	static function scriptInit()
+	{
+		var signals = [
+			'focusGained' => [
+				FlxG.signals.focusGained,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.onFocusGained(new FocusEvent(GAINED, script, CoolUtil.getCurrentState()));
+				})
+			],
+			'focusLost' => [
+				FlxG.signals.focusLost,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.onFocusLost(new FocusEvent(GAINED, script, CoolUtil.getCurrentState()));
+				})
+			],
+
+			'preStateSwitch' => [
+				FlxG.signals.preStateSwitch,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.onStateSwitchPre(null);
+				})
+			],
+			'postStateSwitch' => [
+				FlxG.signals.postStateSwitch,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.onStateSwitchPost(null);
+				})
+			],
+
+			'preStateCreate' => [
+				FlxG.signals.preStateCreate,
+				function(state:FlxState) ScriptManager.callEvent(script ->
+				{
+					script.create(new CreateEvent(PRE, script, CoolUtil.getCurrentState()));
+				})
+			],
+			'postStateCreate' => [
+				MusicBeatState.postStateCreate,
+				function(state:FlxState) ScriptManager.callEvent(script ->
+				{
+					script.create(new CreateEvent(POST, script, CoolUtil.getCurrentState()));
+				})
+			],
+
+			'preUpdate' => [
+				FlxG.signals.preUpdate,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.update(new UpdateEvent(PRE, script, CoolUtil.getCurrentState()));
+				})
+			],
+			'postUpdate' => [
+				FlxG.signals.postUpdate,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.update(new UpdateEvent(PRE, script, CoolUtil.getCurrentState()));
+				})
+			],
+
+			'preStateSwitch' => [
+				FlxG.signals.preStateSwitch,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.onStateSwitch(new SwitchStateEvent(PRE, script, CoolUtil.getCurrentState()));
+				})
+			],
+			'postStateSwitch' => [
+				FlxG.signals.postStateSwitch,
+				function() ScriptManager.callEvent(script ->
+				{
+					script.onStateSwitch(new SwitchStateEvent(POST, script, CoolUtil.getCurrentState()));
+				})
+			],
+		];
+
+		for (signalName => signalVariables in signals)
+		{
+			// var signalClass:FlxSignal = signalVariables[0];
+			var signalClass:FlxTypedSignal<Any->Void> = signalVariables[0];
+
+			if (!signalClass.has(_ -> signalVariables[1]))
+				signalClass.add(_ -> signalVariables[1]);
+		}
 	}
 	#end
 }

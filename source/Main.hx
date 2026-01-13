@@ -156,7 +156,7 @@ class Main extends Sprite
 				trace('reset');
 
 				Script.loadMiscScripts();
-				FlxG.resetState();
+				LoadingState.loadAndSwitchState(new MainMenuState(), true);
 			}
 
 			Script.callOnMiscScripts('postUpdate', []);

@@ -12,7 +12,6 @@ import sys.FileSystem;
 import scripting.classAlts.ScriptedStd;
 import haxe.Log;
 import crowplexus.iris.Iris;
-
 import modding.ModCore;
 
 using StringTools;
@@ -183,7 +182,9 @@ class Script extends Iris
 			"OptionsDirect" => OptionsDirect,
 			"OptionsMenu" => OptionsMenu,
 
+			#if FEATURE_FILESYSTEM
 			"Caching" => Caching,
+			#end
 
 			"Alphabet" => Alphabet,
 

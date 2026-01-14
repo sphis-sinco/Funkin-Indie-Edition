@@ -1,4 +1,4 @@
-# 0.2.0 (1/14/2026)
+# 0.2.0 (1/13/2026)
 
 - 💖 Added: Mod tab to options menu
 - Changed: The asterisk (*) in debug (and now) indev window titles are now in the version at the end

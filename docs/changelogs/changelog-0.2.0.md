@@ -1,5 +1,6 @@
 # 0.2.0 (1/13/2026)
 
+- 💖 Added: "Ugly mod", new example mod
 - 💖 Added: Mod tab to options menu
 - Changed: The asterisk (*) in debug (and now) indev window titles are now in the version at the end
 - Fixed: PlayState instance is nulled properly

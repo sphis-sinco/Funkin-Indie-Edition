@@ -23,7 +23,7 @@ class Script extends Iris
 
 	public static var SPECIFIC_SCRIPT_FOLDERS:Array<String> = ['characters'];
 
-	public static function loadMiscScripts()
+	public static function loadScripts()
 	{
 		callOnMiscScripts('destroy');
 		callOnCharacterScripts('destroy');

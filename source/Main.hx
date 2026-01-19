@@ -160,7 +160,7 @@ class Main extends Sprite
 			Script.callOnMiscScripts('postUpdate', []);
 		});
 
-		Script.loadMiscScripts();
+		Script.loadScripts();
 	}
 
 	public static function reloadReset()
@@ -168,7 +168,7 @@ class Main extends Sprite
 		trace('reset');
 
 		ModCore.reloadMods();
-		Script.loadMiscScripts();
+		Script.loadScripts();
 		// LoadingState.loadAndSwitchState(new MainMenuState(), true);
 	}
 

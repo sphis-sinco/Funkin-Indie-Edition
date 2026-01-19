@@ -4,7 +4,7 @@
 
 	<app title="Friday Night Funkin'" file="FunkinIndie"
 		packageName="com.macohi.indieedition" package="com.macohi.indieedition" main="Main"
-		version="0.2.0" company="Macohi" />
+		version="0.3.0" company="Macohi" />
 
 	<!--Switch
 	Export with Unique ApplicationID and Icon-->

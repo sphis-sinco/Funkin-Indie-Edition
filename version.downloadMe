@@ -1,10 +1,1 @@
-0.2.0;
-- Added: "Ugly mod", new example mod
-- Added: Mod tab to options menu
-- Added: StoryMenuState has an instance (it's accessible in scripts)
-- Added: FreeplayState has an instance (it's accessible in scripts)
-- Added: MainMenuState has an instance (it's accessible in scripts)
-- Fixed: Character camera positions are correct again (Issue #2)
-- Changed: Mod "api_version" minimum is "0.2.0" now can't be "0.3.0" or above
-- Added: F3 + P Key combo : Reloads scripts
-- Added: SCRIPTING SUPPORT!! (Right now they're backround things (Misc Scripts!) but they'll be expanded!)
+0.3.0;

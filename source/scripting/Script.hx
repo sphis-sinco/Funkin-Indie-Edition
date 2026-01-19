@@ -19,17 +19,24 @@ using StringTools;
 class Script extends Iris
 {
 	public static var miscScripts:Array<MiscScript> = [];
+	public static var characterScripts:Array<CharacterScript> = [];
 
-	public static var SPECIFIC_SCRIPT_FOLDERS:Array<String> = [];
+	public static var SPECIFIC_SCRIPT_FOLDERS:Array<String> = ['characters'];
 
 	public static function loadMiscScripts()
 	{
 		callOnMiscScripts('destroy');
+		callOnCharacterScripts('destroy');
 
 		for (ms in miscScripts)
 		{
 			ms.destroy();
 			miscScripts.remove(ms);
+		}
+		for (cs in characterScripts)
+		{
+			cs.destroy();
+			characterScripts.remove(cs);
 		}
 
 		var readDir:Dynamic;
@@ -57,16 +64,27 @@ class Script extends Iris
 				if (content.extension() == Path.extension(Paths.haxe('')) #if sys
 					&& !FileSystem.isDirectory(dir.addTrailingSlash() + content) #end)
 				{
+					Debug.logInfo('New MiscScript');
 					var newMiscScript:MiscScript = new MiscScript(content.withoutExtension(), dirSplit.join('/'));
 					miscScripts.push(newMiscScript);
 				}
 				else
 				{
-					#if sys
-					if (FileSystem.isDirectory(dir.addTrailingSlash() + content)
+					if (new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).isDirectory(dir.addTrailingSlash() + content)
 						&& (!SPECIFIC_SCRIPT_FOLDERS.contains(content) && dir == Path.directory(Paths.haxe(''))))
+					{
 						readDir(dir.addTrailingSlash() + content);
-					#end
+					}
+					else
+					{
+						switch (content)
+						{
+							case 'characters':
+								Debug.logInfo('New CharacterScript');
+								var newCharScript:CharacterScript = new CharacterScript(content.withoutExtension(), dirSplit.join('/'));
+								characterScripts.push(newCharScript);
+						}
+					}
 				}
 			}
 		}
@@ -86,11 +104,23 @@ class Script extends Iris
 		return returnValues;
 	}
 
-	public static function setOnMiscScripts(vari:String, value:Dynamic)
+	public static function callOnCharacterScripts(method:String, ?params:Array<Dynamic>):Map<String, Dynamic>
 	{
+		var returnValues:Map<String, Dynamic> = [];
+
+		for (cs in characterScripts)
+			returnValues.set(cs.config.name, cs.call(method, params));
+
+		return returnValues;
+	}
+
+	public static function setOnMiscScripts(vari:String, value:Dynamic)
 		for (ms in miscScripts)
 			ms.set(vari, value);
-	}
+
+	public static function setOnCharacterScripts(vari:String, value:Dynamic)
+		for (cs in characterScripts)
+			cs.set(vari, value);
 
 	override public function new(path:String, scriptName:String)
 	{

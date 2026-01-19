@@ -91,7 +91,8 @@ class Script extends Iris
 
 		readDir(Path.directory(Paths.haxe('')));
 
-		callOnMiscScripts('miscScriptsLoaded');
+		callOnMiscScripts('scriptsLoaded');
+		callOnCharacterScripts('scriptsLoaded');
 	}
 
 	public static function callOnMiscScripts(method:String, ?params:Array<Dynamic>):Map<String, Dynamic>

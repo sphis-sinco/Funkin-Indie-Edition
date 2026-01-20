@@ -23,13 +23,6 @@ class Script extends Iris
 
 	public static var SPECIFIC_SCRIPT_FOLDERS:Array<String> = ['characters'];
 
-	static var filesys(get, never):ZipFileSystem;
-
-	static function get_filesys():ZipFileSystem
-	{
-		return new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY});
-	}
-
 	public static function loadScripts()
 	{
 		callOnMiscScripts('destroy');
@@ -46,8 +39,7 @@ class Script extends Iris
 			characterScripts.remove(cs);
 		}
 
-		miscScripts = [];
-		characterScripts = [];
+		var filesys = new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY});
 
 		var readDir:Dynamic;
 		readDir = function(dir:String)

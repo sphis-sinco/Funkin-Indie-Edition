@@ -1,7 +1,5 @@
 package;
 
-import modding.ModCore;
-import polymod.fs.ZipFileSystem;
 import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -232,13 +230,12 @@ class Paths
 	{
 		if (path == null || path == "")
 			return false;
-		return (OpenFlAssets.exists(path, AssetType.SOUND) || OpenFlAssets.exists(path, AssetType.MUSIC))
-			|| new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).exists(path);
+		return OpenFlAssets.exists(path, AssetType.SOUND) || OpenFlAssets.exists(path, AssetType.MUSIC);
 	}
 
 	inline static public function doesTextAssetExist(path:String)
 	{
-		return OpenFlAssets.exists(path, AssetType.TEXT) || new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).exists(path);
+		return OpenFlAssets.exists(path, AssetType.TEXT);
 	}
 
 	inline static public function image(key:String, ?library:String)

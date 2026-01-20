@@ -23,13 +23,6 @@ class Script extends Iris
 
 	public static var SPECIFIC_SCRIPT_FOLDERS:Array<String> = ['characters'];
 
-	static var filesys(get, never):ZipFileSystem;
-
-	static function get_filesys():ZipFileSystem
-	{
-		return new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY});
-	}
-
 	public static function loadScripts()
 	{
 		callOnMiscScripts('destroy');
@@ -57,7 +50,7 @@ class Script extends Iris
 
 			try
 			{
-				dirContent = filesys.readDirectory(dir);
+				dirContent = Main.filesys.readDirectory(dir);
 			}
 			catch (e)
 			{
@@ -89,7 +82,7 @@ class Script extends Iris
 
 				trace('   * content.extension: ' + content.extension());
 				trace('   * script  extension: ' + Path.extension(Paths.haxe('')));
-				trace('   * isDirectory: ' + filesys.isDirectory(readDirDir));
+				trace('   * isDirectory: ' + Main.filesys.isDirectory(readDirDir));
 
 				trace('   * dirSplit : $dirSplit');
 				trace('   * dirSplit == [\'characters\'] : ${dirSplit == ['characters']}');
@@ -98,7 +91,7 @@ class Script extends Iris
 				trace('   * readDirDir: ' + readDirDir);
 				#end
 
-				if (!filesys.isDirectory(readDirDir))
+				if (!Main.filesys.isDirectory(readDirDir))
 				{
 					if (dirSplit.join('/') == 'characters')
 					{
@@ -116,7 +109,7 @@ class Script extends Iris
 						}
 					}
 				}
-				else if (filesys.isDirectory(readDirDir))
+				else if (Main.filesys.isDirectory(readDirDir))
 					readDir(readDirDir);
 			}
 		}
@@ -158,14 +151,19 @@ class Script extends Iris
 	override public function new(path:String, scriptName:String)
 	{
 		if (!Paths.doesTextAssetExist(Paths.haxe(path)))
+		{
 			Debug.logError('Cannot find script: ' + Paths.haxe(path));
-		else
-			Debug.logInfo('Found script: ' + Paths.haxe(path));
-
-		super((Paths.doesTextAssetExist(Paths.haxe(path)) ? Assets.getText(Paths.haxe(path)) : 'function create() { trace("couldnt find script : ${Paths.haxe(path)}"); }'),
-			{
+			super('function scriptsLoaded() { trace("couldnt find script : ${Paths.haxe(path)}"); }', {
 				name: scriptName
 			});
+		}
+		else
+		{
+			Debug.logInfo('Found script: ' + Paths.haxe(path));
+			super(Paths.getText(Paths.haxe(path)), {
+				name: scriptName
+			});
+		}
 
 		initVars();
 	}
@@ -245,7 +243,7 @@ class Script extends Iris
 			"OptionsDirect" => OptionsDirect,
 			"OptionsMenu" => OptionsMenu,
 
-			#if FEATURE_FILESYSTEM
+			#if FEATURE_Main.FILESYSTEM
 			"Caching" => Caching,
 			#end
 

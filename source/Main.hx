@@ -1,5 +1,6 @@
 package;
 
+import polymod.fs.ZipFileSystem;
 import modding.ModCore;
 import scripting.Script;
 import openfl.display.Bitmap;
@@ -36,6 +37,13 @@ class Main extends Sprite
 	public static var watermarks = true; // Whether to put Kade Engine literally anywhere
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
+	
+	public static var filesys(get, never):ZipFileSystem;
+
+	static function get_filesys():ZipFileSystem
+	{
+		return new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY});
+	}
 
 	public static function main():Void
 	{

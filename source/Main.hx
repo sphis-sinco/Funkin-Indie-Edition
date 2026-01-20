@@ -160,7 +160,7 @@ class Main extends Sprite
 			Script.callOnMiscScripts('postUpdate', []);
 		});
 
-		Script.loadScripts();
+		reloadReset();
 	}
 
 	public static function reloadReset()

@@ -18,8 +18,8 @@ using StringTools;
 
 class Script extends Iris
 {
-	public static var miscScripts:Array<MiscScript> = [];
-	public static var characterScripts:Array<CharacterScript> = [];
+	public static var miscScripts:Array<GeneralScript> = [];
+	public static var characterScripts:Array<GeneralScript> = [];
 
 	public static var SPECIFIC_SCRIPT_FOLDERS:Array<String> = ['characters'];
 
@@ -39,6 +39,8 @@ class Script extends Iris
 			characterScripts.remove(cs);
 		}
 
+		var filesys = new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY});
+
 		var readDir:Dynamic;
 		readDir = function(dir:String)
 		{
@@ -47,7 +49,7 @@ class Script extends Iris
 
 			try
 			{
-				dirContent = new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).readDirectory(dir);
+				dirContent = filesys.readDirectory(dir);
 			}
 			catch (e)
 			{
@@ -61,31 +63,53 @@ class Script extends Iris
 
 			for (content in dirContent)
 			{
-				if (content.extension() == Path.extension(Paths.haxe('')) #if sys
-					&& !FileSystem.isDirectory(dir.addTrailingSlash() + content) #end)
+				var scriptFile:String = content.withoutExtension();
+				var path:String = dirSplit.join('/').addTrailingSlash();
+				path = path.replace('//', '/');
+
+				var readDirDir:String = dir.addTrailingSlash() + content;
+
+				var ret = true;
+				for (d in dirSplit)
+					for (ssf in SPECIFIC_SCRIPT_FOLDERS)
+						if (ssf == d && dirSplit.length == ssf.split('/').length)
+							ret = false;
+
+				#if ALL_LOADSCRIPTS_READDIR_TRACES
+				trace('readDir($dir)');
+				trace(' * content : $content');
+
+				trace('   * content.extension: ' + content.extension());
+				trace('   * script  extension: ' + Path.extension(Paths.haxe('')));
+				trace('   * isDirectory: ' + filesys.isDirectory(readDirDir));
+
+				trace('   * dirSplit : $dirSplit');
+				trace('   * dirSplit == [\'characters\'] : ${dirSplit == ['characters']}');
+				trace('   * dirSplit.join(\'/\') : ${dirSplit.join('/')}');
+				trace('   * fullpath: ' + Paths.haxe(path + scriptFile));
+				trace('   * readDirDir: ' + readDirDir);
+				#end
+
+				if (!filesys.isDirectory(readDirDir))
 				{
-					Debug.logInfo('New MiscScript');
-					var newMiscScript:MiscScript = new MiscScript(content.withoutExtension(), dirSplit.join('/'));
-					miscScripts.push(newMiscScript);
-				}
-				else
-				{
-					if (new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).isDirectory(dir.addTrailingSlash() + content)
-						&& (!SPECIFIC_SCRIPT_FOLDERS.contains(content) && dir == Path.directory(Paths.haxe(''))))
+					if (dirSplit.join('/') == 'characters')
 					{
-						readDir(dir.addTrailingSlash() + content);
+						trace('CHARACTER');
+						var newCharScript:GeneralScript = new GeneralScript(scriptFile, path.addTrailingSlash());
+						characterScripts.push(newCharScript);
 					}
 					else
 					{
-						switch (content)
+						if (ret)
 						{
-							case 'characters':
-								Debug.logInfo('New CharacterScript');
-								var newCharScript:CharacterScript = new CharacterScript(content.withoutExtension(), dirSplit.join('/'));
-								characterScripts.push(newCharScript);
+							trace('MISC');
+							var newMiscScript:GeneralScript = new GeneralScript(scriptFile, path.addTrailingSlash());
+							miscScripts.push(newMiscScript);
 						}
 					}
 				}
+				else if (filesys.isDirectory(readDirDir))
+					readDir(readDirDir);
 			}
 		}
 
@@ -228,7 +252,7 @@ class Script extends Iris
 			"ModCore" => ModCore,
 			"Global" => Global,
 
-			"MiscScript" => MiscScript,
+			"GeneralScript" => GeneralScript,
 			"Script" => Script,
 
 			#if FEATURE_LUAMODCHART

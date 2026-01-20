@@ -56,3 +56,9 @@ While simple, they can be VERY powerful.
 <video controls src="art/readme/miscScripts.mp4" title="MiscScripts"></video>
 
 With Misc Scripts it's just alot of checking specific values if you want them to do things.
+
+### Character Scripts
+
+Added in `0.3.0`,
+Character Scripts are scripts that modify things related to characters,
+meaning you can have anything done to the character

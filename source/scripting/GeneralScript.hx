@@ -1,9 +1,9 @@
 package scripting;
 
-class MiscScript extends Script
+class GeneralScript extends Script
 {
 	override public function new(scriptFile:String, ?path:String)
 	{
-		super('$path$scriptFile', 'MiscScript($path$scriptFile)');
+		super('$path$scriptFile', '$path$scriptFile');
 	}
 }

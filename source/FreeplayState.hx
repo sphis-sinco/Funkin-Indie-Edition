@@ -256,7 +256,9 @@ class FreeplayState extends MusicBeatState
 				diffsThatExist.push("Normal");
 
 			if (diffsThatExist.length == 0)
-				Debug.displayAlert(meta.songName + " Chart", 'No difficulties found for chart ($songId), skipping.');
+			{
+				Debug.displayAlert(meta.songName + " Chart", "No difficulties found for chart, skipping.");
+			}
 			#else
 			diffsThatExist = ["Easy", "Normal", "Hard"];
 			#end

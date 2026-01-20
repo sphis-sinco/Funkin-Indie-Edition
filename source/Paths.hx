@@ -1,5 +1,7 @@
 package;
 
+import modding.ModCore;
+import polymod.fs.ZipFileSystem;
 import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -36,7 +38,6 @@ class Paths
 				return levelPath;
 		}
 
-		Debug.logInfo(getPreloadPath(file));
 		return getPreloadPath(file);
 	}
 
@@ -77,7 +78,7 @@ class Paths
 
 	static public function loadJSON(key:String, ?library:String):Dynamic
 	{
-		var rawJson = getText(json(key, library)).trim();
+		var rawJson = OpenFlAssets.getText(Paths.json(key, library)).trim();
 
 		// Perform cleanup on files that have bad data at the end.
 		while (!rawJson.endsWith("}"))
@@ -231,12 +232,13 @@ class Paths
 	{
 		if (path == null || path == "")
 			return false;
-		return (OpenFlAssets.exists(path, AssetType.SOUND) || OpenFlAssets.exists(path, AssetType.MUSIC)) || Main.filesys.exists(path);
+		return (OpenFlAssets.exists(path, AssetType.SOUND) || OpenFlAssets.exists(path, AssetType.MUSIC))
+			|| new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).exists(path);
 	}
 
 	inline static public function doesTextAssetExist(path:String)
 	{
-		return OpenFlAssets.exists(path, AssetType.TEXT) || Main.filesys.exists(path);
+		return OpenFlAssets.exists(path, AssetType.TEXT) || new ZipFileSystem({modRoot: ModCore.MOD_DIRECTORY}).exists(path);
 	}
 
 	inline static public function image(key:String, ?library:String)
@@ -268,29 +270,5 @@ class Paths
 			return FlxAtlasFrames.fromSpriteSheetPacker(loadImage('characters/$key', library), file('images/characters/$key.txt', library));
 		}
 		return FlxAtlasFrames.fromSpriteSheetPacker(loadImage(key, library), file('images/$key.txt', library));
-	}
-
-	public static function getText(path:String)
-	{
-		var filesysResult:String = Main.filesys.getFileBytes(path).toString();
-		var openflResult:String = null;
-
-		try
-		{
-			if (doesTextAssetExist(path))
-				openflResult = OpenFlAssets.getText(path);
-		}
-		catch (e)
-		{
-			openflResult = null;
-		}
-
-		if (openflResult == null && filesysResult != null)
-			return filesysResult;
-
-		if (openflResult != null && filesysResult == null)
-			return openflResult;
-
-		return null;
 	}
 }

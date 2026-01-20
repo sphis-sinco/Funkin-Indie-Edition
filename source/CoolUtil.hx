@@ -25,7 +25,7 @@ class CoolUtil
 		if (!Paths.doesTextAssetExist(path))
 			return [];
 
-		var daList:Array<String> = Paths.getText(path).trim().split('\n');
+		var daList:Array<String> = OpenFlAssets.getText(path).trim().split('\n');
 
 		for (i in 0...daList.length)
 		{

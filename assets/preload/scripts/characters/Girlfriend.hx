@@ -12,7 +12,7 @@ function update(character:Character, elapsed:Float)
 {
 	if (isChar(character))
 	{
-		if (character.animation.curAnim.name == 'hairFall' && character.animation.curAnim.finished)
+		if (character.animation.name == 'hairFall' && character.animation.finished)
 		{
 			character.danced = true;
 			character.playAnim('danceRight');

@@ -1,5 +1,6 @@
 package;
 
+import scripting.Script;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -33,36 +34,21 @@ class Character extends FlxSprite
 		var tex:FlxAtlasFrames;
 		antialiasing = FlxG.save.data.antialiasing;
 
-		switch (curCharacter)
+		var ret = false;
+		for (key => value in Script.callOnCharacterScripts('makeCharacter', [this]))
 		{
-			default:
-				parseDataFile();
+			if (value == ret)
+				ret = true;
 		}
 
-		if (curCharacter.startsWith('bf'))
-			dance();
-
-		if (isPlayer && frames != null)
-		{
-			flipX = !flipX;
-
-			// Doesn't flip for BF, since his are already in the right place???
-			if (!curCharacter.startsWith('bf'))
+		if (!ret)
+			switch (curCharacter)
 			{
-				// var animArray
-				var oldRight = animation.getByName('singRIGHT').frames;
-				animation.getByName('singRIGHT').frames = animation.getByName('singLEFT').frames;
-				animation.getByName('singLEFT').frames = oldRight;
-
-				// IF THEY HAVE MISS ANIMATIONS??
-				if (animation.getByName('singRIGHTmiss') != null)
-				{
-					var oldMiss = animation.getByName('singRIGHTmiss').frames;
-					animation.getByName('singRIGHTmiss').frames = animation.getByName('singLEFTmiss').frames;
-					animation.getByName('singLEFTmiss').frames = oldMiss;
-				}
+				default:
+					parseDataFile();
 			}
-		}
+
+		Script.callOnCharacterScripts('postMakeCharacter', [this]);
 	}
 
 	function parseDataFile()
@@ -125,6 +111,35 @@ class Character extends FlxSprite
 
 		flipX = data.properties?.flipX ?? false;
 		updateHitbox();
+
+		loadOffsetFile(curCharacter);
+
+		Script.callOnCharacterScripts('parsedDataFile', [this]);
+
+		if ((data.properties?.danceOnCreation ?? false))
+			dance();
+
+		if (isPlayer && frames != null)
+		{
+			flipX = !flipX;
+
+			// Doesn't flip for BF, since his are already in the right place???
+			if ((data.properties?.flipHorizontalSingingAsPlayer ?? false))
+			{
+				// var animArray
+				var oldRight = animation.getByName('singRIGHT').frames;
+				animation.getByName('singRIGHT').frames = animation.getByName('singLEFT').frames;
+				animation.getByName('singLEFT').frames = oldRight;
+
+				// IF THEY HAVE MISS ANIMATIONS??
+				if (animation.getByName('singRIGHTmiss') != null)
+				{
+					var oldMiss = animation.getByName('singRIGHTmiss').frames;
+					animation.getByName('singRIGHTmiss').frames = animation.getByName('singLEFTmiss').frames;
+					animation.getByName('singLEFTmiss').frames = oldMiss;
+				}
+			}
+		}
 	}
 
 	public function loadOffsetFile(character:String, library:String = 'shared')
@@ -136,7 +151,11 @@ class Character extends FlxSprite
 			var data:Array<String> = offset[i].split(' ');
 			addOffset(data[0], Std.parseInt(data[1]), Std.parseInt(data[2]));
 		}
+
+		Script.callOnCharacterScripts('loadedOffsetFile', [this]);
 	}
+
+	public var dadVar:Float = 4;
 
 	override function update(elapsed:Float)
 	{
@@ -159,79 +178,48 @@ class Character extends FlxSprite
 					playAnim('idleLoop');
 			}
 
-			var dadVar:Float = 4;
+			dadVar = 4.0;
 
-			if (curCharacter == 'dad')
-				dadVar = 6.1;
-			else if (curCharacter == 'gf' || curCharacter == 'spooky')
-				dadVar = 4.1; // fix double dances
+			Script.callOnCharacterScripts('dadvar', [this]);
+
 			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
 			{
-				if (curCharacter == 'gf' || curCharacter == 'spooky')
-					playAnim('danceLeft'); // overridden by dance correctly later
 				dance();
 				holdTimer = 0;
 			}
 		}
 
-		switch (curCharacter)
-		{
-			case 'gf':
-				if (animation.curAnim.name == 'hairFall' && animation.curAnim.finished)
-				{
-					danced = true;
-					playAnim('danceRight');
-				}
-		}
+		Script.callOnCharacterScripts('update', [this, elapsed]);
 
 		super.update(elapsed);
 	}
 
-	private var danced:Bool = false;
+	public var danced:Bool = false;
 
 	/**
 	 * FOR GF DANCING SHIT
 	 */
 	public function dance(forced:Bool = false, altAnim:Bool = false)
 	{
-		if (!debugMode)
+		var ret = false;
+		for (key => value in Script.callOnCharacterScripts('dance', [this, forced, altAnim]))
 		{
-			switch (curCharacter)
-			{
-				case 'gf' | 'gf-christmas' | 'gf-car' | 'gf-pixel':
-					if (!animation.curAnim.name.startsWith('hair') && !animation.curAnim.name.startsWith('sing'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-				case 'spooky':
-					if (!animation.curAnim.name.startsWith('sing'))
-					{
-						danced = !danced;
-
-						if (danced)
-							playAnim('danceRight');
-						else
-							playAnim('danceLeft');
-					}
-				/*
-					// new dance code is gonna end up cutting off animation with the idle
-					// so here's example code that'll fix it. just adjust it to ya character 'n shit
-					case 'custom character':
-						if (!animation.curAnim.name.endsWith('custom animation'))
-							playAnim('idle', forced);
-				 */
-				default:
-					if (altAnim && animation.getByName('idle-alt') != null)
-						playAnim('idle-alt', forced);
-					else
-						playAnim('idle', forced);
-			}
+			if (value == ret)
+				ret = true;
 		}
+
+		if (!ret)
+			if (!debugMode)
+			{
+				switch (curCharacter)
+				{
+					default:
+						if (altAnim && animation.getByName('idle-alt') != null)
+							playAnim('idle-alt', forced);
+						else
+							playAnim('idle', forced);
+				}
+			}
 	}
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
@@ -254,22 +242,7 @@ class Character extends FlxSprite
 		else
 			offset.set(0, 0);
 
-		if (curCharacter == 'gf')
-		{
-			if (AnimName == 'singLEFT')
-			{
-				danced = true;
-			}
-			else if (AnimName == 'singRIGHT')
-			{
-				danced = false;
-			}
-
-			if (AnimName == 'singUP' || AnimName == 'singDOWN')
-			{
-				danced = !danced;
-			}
-		}
+		Script.callOnCharacterScripts('playAnim', [this, AnimName, Force, Reversed, Frame]);
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
@@ -301,6 +274,9 @@ typedef CharacterProperties =
 	var ?scale_addition:Null<Float>;
 
 	var ?flipX:Bool;
+
+	var ?danceOnCreation:Bool;
+	var ?flipHorizontalSingingAsPlayer:Bool;
 }
 
 typedef AnimationData =

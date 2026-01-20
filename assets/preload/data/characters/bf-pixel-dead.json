@@ -3,7 +3,8 @@
 	"startingAnim": "firstDeath",
 	"properties": {
 		"flipX": true,
-		"pixel": true
+		"pixel": true,
+		"danceOnCreation": true
 	},
 	"asset": "characters/bfPixelsDEAD",
 	"barColor": "#31B0D1",

@@ -1,4 +1,4 @@
-﻿# Building
+# Building
 
 **Also note**: you should be familiar with the commandline. If not, read this [quick guide by ninjamuffin](https://ninjamuffin99.newgrounds.com/news/post/1090480).
 
@@ -12,6 +12,7 @@
 - Download Git from [git-scm.com](https://www.git-scm.com)
 - Run `haxelib --global install hmm` and then `haxelib --global run hmm setup` to install hmm.json
 - Run `hmm install` to install all haxelibs of the current branch
+- Run `lime rebuild extension-webm windows`
 
 ### Perform additional platform setup
 
